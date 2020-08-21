@@ -1,14 +1,22 @@
 import React from "react";
 import "./App.css";
-import AuthProvider from './lib/Services/AuthProvider'
+import AuthProvider from "./lib/Services/AuthProvider";
+import { Switch, Route } from "react-router-dom";
+import Signup from "./pages/Signup"
 
 function App() {
-  return <div className="App">
-    <AuthProvider>
+  return(
+  <AuthProvider>
+    <div className="Container">
 
-    </AuthProvider>
+    <Switch>
+    <Route exact path="/signup" component={Signup}/>
 
-  </div>;
+    </Switch>
+
+    </div>;
+  </AuthProvider>
+  )
 }
 
 export default App;

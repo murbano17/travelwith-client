@@ -1,46 +1,51 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {withAuth} from '../lib/Services/AuthProvider'
+import { withAuth } from "../lib/Services/AuthProvider";
 
 class Signup extends Component {
-state = {
-        username='',
-        email ='',
-        password='',
-        profilePic='',
-        userFrom='',
-        userBirthdate='',
-        about='',
-        invitationCode=''
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      profilePic: "",
+      userFrom: "",
+      userBirthdate: "",
+      about: "",
+      invitationCode: "",
     };
+  }
 
-handleFormSubmit = (event) => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
-    const {  username,
-    email ,
-    password,
-    profilePic,
-    userFrom,
-    userBirthdate,
-    about,
-    invitationCode } = this.state;
-
-    this.props.signup(
-      {username,
-      email ,
+    const {
+      username,
+      email,
       password,
       profilePic,
       userFrom,
       userBirthdate,
       about,
-      invitationCode})
-}
+      invitationCode,
+    } = this.state;
 
-handleChange = (event) =>{
-    const {name, value} = event.target;
-    this.setState({[name]:value})
- }
+    this.props.signup({
+      username,
+      email,
+      password,
+      profilePic,
+      userFrom,
+      userBirthdate,
+      about,
+      invitationCode,
+    });
+  };
 
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
     return (
@@ -51,7 +56,7 @@ handleChange = (event) =>{
           <input
             type="text"
             name="username"
-            value={username}
+            value={this.username}
             onChange={this.handleChange}
           />
 
@@ -59,7 +64,7 @@ handleChange = (event) =>{
           <input
             type="text"
             name="email"
-            value={email}
+            value={this.email}
             onChange={this.handleChange}
           />
 
@@ -67,7 +72,7 @@ handleChange = (event) =>{
           <input
             type="password"
             name="password"
-            value={password}
+            value={this.password}
             onChange={this.handleChange}
           />
 
@@ -75,7 +80,7 @@ handleChange = (event) =>{
           <input
             type="file"
             name="profilePic"
-            value={profilePic}
+            value={this.profilePic}
             onChange={this.handleChange}
           />
 
@@ -83,7 +88,7 @@ handleChange = (event) =>{
           <input
             type="text"
             name="userFrom"
-            value={userFrom}
+            value={this.userFrom}
             onChange={this.handleChange}
           />
 
@@ -91,7 +96,7 @@ handleChange = (event) =>{
           <input
             type="Date"
             name="userBirthdate"
-            value={userBirthdate}
+            value={this.userBirthdate}
             onChange={this.handleChange}
           />
 
@@ -99,14 +104,14 @@ handleChange = (event) =>{
           <input
             type="text-area"
             name="about"
-            value={about}
+            value={this.about}
             onChange={this.handleChange}
           />
 
           <input
             type="hidden"
             name="invitationCode"
-            value={invitationCode}
+            value={this.invitationCode}
             onChange={this.handleChange}
           />
 
