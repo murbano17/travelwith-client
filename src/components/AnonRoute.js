@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRoute, Redirect, Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
 
 function AnonRoute({ component: Component, isLoggedin, ...rest }) {
