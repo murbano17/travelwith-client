@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 class Login extends Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login-container">
+        <Navbar />
         <h1>Login</h1>
         <form onSubmit={this.handleFormSubmit}>
           <label>Email</label>
@@ -46,8 +48,9 @@ class Login extends Component {
 
           <input type="submit" value="Login" />
         </form>
-        <p>Don't have an account? <Link to={"/signup"}> Create one</Link></p>
-        
+        <p>
+          Don't have an account? <Link to={"/signup"}> Create one</Link>
+        </p>
       </div>
     );
   }

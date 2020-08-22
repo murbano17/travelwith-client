@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
+import Navbar from "../components/Navbar";
 
 class Signup extends Component {
   constructor(props) {
@@ -49,7 +50,9 @@ class Signup extends Component {
 
   render() {
     return (
+
       <div>
+            <Navbar/>
         <h1>Sign Up!</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <label>Username:</label>
