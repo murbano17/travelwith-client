@@ -9,7 +9,8 @@ class AxiosMethods {
   }
 
   getTravelsList() {
-    return this.axiosBaseRoute.get("/travel", {}).then(({ data }) => data);
+    return this.axiosBaseRoute.get("/travel", {}).then(({ data }) => data)
+    
   }
 
   // getOneTravel(travel) {
@@ -67,9 +68,9 @@ class AxiosMethods {
       .then(({ data }) => data);
   }
 
-  getProfile(user) {
+  getProfile(_id) {
     return this.axiosBaseRoute
-      .get(`/profile/${user._id}`, {})
+      .get(`/profile/${_id}`, {})
       .then(({ data }) => data);
   }
 

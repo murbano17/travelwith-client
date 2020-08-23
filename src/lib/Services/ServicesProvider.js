@@ -1,17 +1,56 @@
 import React from "react";
 import services from "./Services";
-import auth from "./AuthService";
 const { Consumer, Provider } = React.createContext();
 
 //Consumer
-// const withServices = (WrappedComponent) => {}
+const withServices = (WrappedComponent) => {
+  return class extends React.Component {
+    render() {
+      return (
+        <Consumer>
+          {({
+            getTravelsList,
+            createTravel,
+            deleteTravel,
+            getProfile,
+            editProfile,
+            createTask,
+            editTask,
+            deleteTask,
+            createInvitation,
+            joinTravel,
+            travel,
+            user,
+          }) => {
+            return (
+              <WrappedComponent
+                getTravelsList={getTravelsList}
+                createTravel={createTravel}
+                deleteTravel={deleteTravel}
+                getProfile={getProfile}
+                editProfile={editProfile}
+                createTask={createTask}
+                editTask={editTask}
+                deleteTask={deleteTask}
+                createInvitation={createInvitation}
+                joinTravel={joinTravel}
+                travel={travel}
+                user={user}
+                {...this.props}
+              />
+            );
+          }}
+        </Consumer>
+      );
+    }
+  };
+};
 
 //Provider
-
 class ServiceProvider extends React.Component {
   constructor() {
     super();
-    this.state = { isLoading: true, travel: null, };
+    this.state = { isLoading: true, travel: null, user: null };
   }
 
   componentDidMount() {
@@ -19,7 +58,10 @@ class ServiceProvider extends React.Component {
   }
 
   getTravelsList = () => {
-    services.getTravelsList();
+    services
+      .getTravelsList()
+      .then((res) => console.log('RESSSSSS', res))
+      .catch((err) => console.log(err));
   };
 
   createTravel = (travel) => {
@@ -33,26 +75,159 @@ class ServiceProvider extends React.Component {
       coverPic,
     } = travel;
 
-    services.createTravel({
+    services
+      .createTravel({
+        travelName,
+        startDate,
+        endDate,
+        origin,
+        destination,
+        isPublic,
+        coverPic,
+      })
+      .then((travel) => this.setState({ travel }))
+      .catch((err) => console.log(err));
+  };
+
+  editTravel = (travel) => {
+    const {
+      _id,
       travelName,
       startDate,
       endDate,
       origin,
       destination,
-      isPublic,
       coverPic,
-    })
-    .then((travel) => this.setState({travel}))
-    .catch(err => console.log(err))
+    } = travel;
+
+    services
+      .editTravel({
+        _id,
+        travelName,
+        startDate,
+        endDate,
+        origin,
+        destination,
+        coverPic,
+      })
+      .then((travel) => this.setState({ travel }))
+      .catch((err) => console.log(err));
   };
 
-  
+  deleteTravel = (travel) => {
+    const { _id } = travel;
+
+    services
+      .deleteTravel(_id)
+      .then((response) => console.log("Travel deleted", response))
+      .catch((err) => console.log(err));
+  };
+
+  getProfile = (user) => {
+    const { _id } = user;
+    services
+      .getProfile({ _id })
+      .then((user) => console.log(user + "profile"))
+      .catch((err) => console.log(err));
+  };
+
+  editProfile = (user) => {
+    const { _id, userName, userFrom, userBirthdate, about, profilePic } = user;
+
+    services
+      .editProfile({
+        _id,
+        userName,
+        userFrom,
+        userBirthdate,
+        about,
+        profilePic,
+      })
+      .then((user) => this.setState({ user }))
+      .catch((err) => console.log(err));
+  };
+
+  createTask = (travel, taskName) => {
+    const { _id } = travel;
+
+    services
+      .createTask({ _id, taskName })
+      .then((res) => console.log("Task created"))
+      .catch((err) => console.log(err));
+  };
+
+  editTask = (task) => {
+    const { _id, taskName, taskDeadline, assignTo, taskNote } = task;
+
+    services
+      .editTask({ _id, taskName, taskDeadline, assignTo, taskNote })
+      .then((task) => console.log(task + "edited"))
+      .catch((err) => console.log(err));
+  };
+
+  deleteTask = (task) => {
+    const { _id } = task;
+
+    services
+      .deleteTask({ _id })
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
+  };
+
+  createInvitation = (travel, guestEmail) => {
+    const { _id } = travel;
+
+    services
+      .createInvitation({ _id, guestEmail })
+      .then((res) => console.log("Invitation created"))
+      .catch((err) => console.log(err));
+  };
+
+  joinTravel = (travel) => {
+    const { _id } = travel;
+
+    services
+      .joinTravel({ _id })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
 
   render() {
+    const {
+      getTravelsList,
+      createTravel,
+      deleteTravel,
+      getProfile,
+      editProfile,
+      createTask,
+      editTask,
+      deleteTask,
+      createInvitation,
+      joinTravel,
+    } = this;
+    const { isLoading, user, travel } = this.state;
+
     return isLoading ? (
       <div>Loading...</div>
     ) : (
-      <Provider value={{}}>{this.props.children}</Provider>
+      <Provider
+        value={{
+          getTravelsList,
+          createTravel,
+          deleteTravel,
+          getProfile,
+          editProfile,
+          createTask,
+          editTask,
+          deleteTask,
+          createInvitation,
+          joinTravel,
+          travel,
+          user,
+        }}
+      >
+        {this.props.children}
+      </Provider>
     );
   }
 }
