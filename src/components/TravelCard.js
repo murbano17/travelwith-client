@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TravelCard = (props) => {
   //   const eachTravel = props.eachTravel
@@ -9,9 +10,7 @@ const TravelCard = (props) => {
         <h5 className="card-title">{props.travelName}</h5>
         <p className="card-text">Origin: {props.origin}</p>
         <p className="card-text">Destination: {props.destination}</p>
-        <a href="#" className="btn btn-primary">
-          See travel details
-        </a>
+        <Link className="btn btn-primary" to={`/travel/${props._id}`}>See travel details</Link>
       </div>
     </div>
   );
