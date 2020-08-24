@@ -1,5 +1,6 @@
 import React from "react";
 import services from "./Services";
+import axios from "axios";
 const { Consumer, Provider } = React.createContext();
 
 //Consumer
@@ -21,6 +22,7 @@ const withServices = (WrappedComponent) => {
             joinTravel,
             travel,
             user,
+            handleUpload,
           }) => {
             return (
               <WrappedComponent
@@ -36,6 +38,7 @@ const withServices = (WrappedComponent) => {
                 joinTravel={joinTravel}
                 travel={travel}
                 user={user}
+                handleUpload={handleUpload}
                 {...this.props}
               />
             );
@@ -58,13 +61,12 @@ class ServiceProvider extends React.Component {
   }
 
   getTravelsList = () => {
-    return (
-    services
+    return services
       .getTravelsList()
       .then((res) => res)
-      .then(resp => resp)
-      .catch((err) => console.log(err))
-      )};
+      .then((resp) => resp)
+      .catch((err) => console.log(err));
+  };
 
   createTravel = (travel) => {
     const {
@@ -185,6 +187,17 @@ class ServiceProvider extends React.Component {
       .catch((err) => console.log(err));
   };
 
+  handleUpload(theFile) {
+    return axios
+      .create({
+        baseURL: process.env.REACT_APP_API_URI,
+        withCredentials: true,
+      })
+      .post("/upload", theFile)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+  }
+
   joinTravel = (travel) => {
     const { _id } = travel;
 
@@ -206,6 +219,7 @@ class ServiceProvider extends React.Component {
       deleteTask,
       createInvitation,
       joinTravel,
+      handleUpload,
     } = this;
     const { isLoading, user, travel } = this.state;
 
@@ -226,6 +240,7 @@ class ServiceProvider extends React.Component {
           joinTravel,
           travel,
           user,
+          handleUpload,
         }}
       >
         {this.props.children}

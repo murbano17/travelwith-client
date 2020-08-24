@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withServices } from '../lib/Services/ServicesProvider'
+import { withServices } from "../lib/Services/ServicesProvider";
 
 class CreateTravel extends Component {
   constructor(props) {
@@ -14,27 +14,27 @@ class CreateTravel extends Component {
       coverPic: "",
     };
   }
-  
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {
-        travelName,
-        startDate,
-        endDate,
-        origin,
-        destination,
-        isPublic,
-        coverPic,
+      travelName,
+      startDate,
+      endDate,
+      origin,
+      destination,
+      isPublic,
+      coverPic,
     } = this.state;
 
     this.props.createTravel({
-        travelName,
-        startDate,
-        endDate,
-        origin,
-        destination,
-        isPublic,
-        coverPic,
+      travelName,
+      startDate,
+      endDate,
+      origin,
+      destination,
+      isPublic,
+      coverPic,
     });
   };
 
@@ -43,8 +43,25 @@ class CreateTravel extends Component {
     this.setState({ [name]: value });
   };
 
+  handleFileUpload = (event) => {
+    console.log("The file to be uploaded is:", event.target.files[0]);
+
+    const uploadData = new FormData();
+    uploadData.append("coverPic", event.target.files[0]);
+
+    this.props
+      .handleUpload(uploadData)
+      .then((response) => {
+        console.log("response is:", response);
+        this.setState({ coverPic: response.secure_url })
+      })
+      .catch((err) => {
+        console.log("Error while uploading the file:", err)
+      });
+  };
+
   render() {
-      console.log('PROPSSS', this.props)
+    console.log("PROPSSS", this.props);
     return (
       <div>
         <h1>Create your travel</h1>
@@ -78,7 +95,7 @@ class CreateTravel extends Component {
             type="file"
             name="coverPic"
             value={this.coverPic}
-            onChange={this.handleChange}
+            onChange={this.handleFileUpload}
           />
 
           <label>Origin:</label>

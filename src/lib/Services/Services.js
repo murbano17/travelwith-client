@@ -9,14 +9,8 @@ class AxiosMethods {
   }
 
   getTravelsList() {
-    return this.axiosBaseRoute.get("/travel", {}).then(({ data }) => data)
+    return this.axiosBaseRoute.get("/travel", {}).then(({ data }) => data);
   }
-
-  // getOneTravel(travel) {
-  //   return this.axiosBaseRoute
-  //     .get(`/travel/${travel._id}`, {})
-  //     .then(({ data }) => data);
-  // }
 
   createTravel({
     travelName,
@@ -115,7 +109,13 @@ class AxiosMethods {
       .post(`/travel/${_id}/join`, {})
       .then(({ data }) => data);
   }
-  
+
+/*   handleUpload(theFile) {
+    return this.axiosBaseRoute
+      .post("/upload", theFile)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+  }  */
 }
 
 const axiosRequestMethods = new AxiosMethods();
