@@ -52,7 +52,6 @@ class Signup extends Component {
     return (
 
       <div>
-            <Navbar/>
         <h1>Sign Up!</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <label>Username:</label>
