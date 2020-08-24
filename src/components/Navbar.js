@@ -23,10 +23,10 @@ class Navbar extends Component {
               <Link to={"/travel"}>Find a travel</Link>
             </li>
             <li>
-              <Link to={"/dashboard"}>Dashboard</Link>
+              <Link to={`/profile/${user._id}/dashboard`}>Dashboard</Link>
             </li>
             <li>
-              <Link to={"/profile"}>Profile</Link>
+              <Link to={`/profile/${user._id}`}>Profile</Link>
             </li>
             <li>
               <Link to={"/travel/create"}>Create your travel</Link>
