@@ -10,13 +10,6 @@ class Travel extends Component {
     };
   }
 
-  // getList = () => {
-  //   return (
-  //   this.props.getTravelsList()
-  //   .then(resp => this.setState({travelList: resp}))
-  //   .catch(err => console.log(err)))
-  // }
-
   componentDidMount() {
     return this.props
       .getTravelsList()
