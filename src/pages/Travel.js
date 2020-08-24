@@ -13,21 +13,23 @@ constructor(props){
   
 }
 
-getList = () => {
-  return ( 
-  this.props.getTravelsList()
-  .then(res => console.log('HOLA', res)))
-  .catch(err => console.log(err))
-}
+// getList = () => {
+//   return ( 
+//   this.props.getTravelsList()
+//   .then(resp => this.setState({travelList: resp}))
+//   .catch(err => console.log(err)))
+// }
 
 componentDidMount () {
-  this.getList()  
+  return ( 
+    this.props.getTravelsList()
+    .then(resp => this.setState({travelList: resp}))
+    .catch(err => console.log(err)))
 }
 
 
 
   render() {
-    console.log('ACAAAAAAAAAA', this.state.travelList)
     return (
       <div className="travelList-container">
         {this.state.travelList.map(eachTravel => {
