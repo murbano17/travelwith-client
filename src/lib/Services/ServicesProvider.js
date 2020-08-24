@@ -23,6 +23,7 @@ const withServices = (WrappedComponent) => {
             travel,
             user,
             handleUpload,
+            handleUploadCoverPic,
           }) => {
             return (
               <WrappedComponent
@@ -39,6 +40,7 @@ const withServices = (WrappedComponent) => {
                 travel={travel}
                 user={user}
                 handleUpload={handleUpload}
+                handleUploadCoverPic={handleUploadCoverPic}
                 {...this.props}
               />
             );
@@ -64,7 +66,6 @@ class ServiceProvider extends React.Component {
     return services
       .getTravelsList()
       .then((res) => res)
-      .then((resp) => resp)
       .catch((err) => console.log(err));
   };
 
@@ -79,7 +80,7 @@ class ServiceProvider extends React.Component {
       coverPic,
     } = travel;
 
-    services
+    return services
       .createTravel({
         travelName,
         startDate,
@@ -104,7 +105,7 @@ class ServiceProvider extends React.Component {
       coverPic,
     } = travel;
 
-    services
+    return services
       .editTravel({
         _id,
         travelName,
@@ -121,27 +122,27 @@ class ServiceProvider extends React.Component {
   deleteTravel = (travel) => {
     const { _id } = travel;
 
-    services
+    return services
       .deleteTravel(_id)
       .then((response) => console.log("Travel deleted", response))
       .catch((err) => console.log(err));
   };
 
-  getProfile = (user) => {
-    const { _id } = user;
-    services
-      .getProfile({ _id })
-      .then((user) => console.log(user + "profile"))
+  getProfile = (id) => {
+    const userId = id
+    return services
+      .getProfile(userId)
+      .then((user) => user)
       .catch((err) => console.log(err));
   };
 
   editProfile = (user) => {
-    const { _id, userName, userFrom, userBirthdate, about, profilePic } = user;
+    const { _id, username, userFrom, userBirthdate, about, profilePic } = user;
 
-    services
+    return services
       .editProfile({
         _id,
-        userName,
+        username,
         userFrom,
         userBirthdate,
         about,
@@ -154,7 +155,7 @@ class ServiceProvider extends React.Component {
   createTask = (travel, taskName) => {
     const { _id } = travel;
 
-    services
+    return services
       .createTask({ _id, taskName })
       .then((res) => console.log("Task created"))
       .catch((err) => console.log(err));
@@ -163,7 +164,7 @@ class ServiceProvider extends React.Component {
   editTask = (task) => {
     const { _id, taskName, taskDeadline, assignTo, taskNote } = task;
 
-    services
+    return services
       .editTask({ _id, taskName, taskDeadline, assignTo, taskNote })
       .then((task) => console.log(task + "edited"))
       .catch((err) => console.log(err));
@@ -172,7 +173,7 @@ class ServiceProvider extends React.Component {
   deleteTask = (task) => {
     const { _id } = task;
 
-    services
+    return services
       .deleteTask({ _id })
       .then((resp) => console.log(resp))
       .catch((err) => console.log(err));
@@ -181,7 +182,7 @@ class ServiceProvider extends React.Component {
   createInvitation = (travel, guestEmail) => {
     const { _id } = travel;
 
-    services
+    return services
       .createInvitation({ _id, guestEmail })
       .then((res) => console.log("Invitation created"))
       .catch((err) => console.log(err));
@@ -198,10 +199,22 @@ class ServiceProvider extends React.Component {
       .catch((err) => console.log(err));
   }
 
+  //handle duplicado por doble ruta (VER!)
+  handleUploadCoverPic(theFile) {
+    return axios
+      .create({
+        baseURL: process.env.REACT_APP_API_URI,
+        withCredentials: true,
+      })
+      .post("/upload/coverpic", theFile)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+  }
+
   joinTravel = (travel) => {
     const { _id } = travel;
 
-    services
+    return services
       .joinTravel({ _id })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
@@ -220,6 +233,7 @@ class ServiceProvider extends React.Component {
       createInvitation,
       joinTravel,
       handleUpload,
+      handleUploadCoverPic,
     } = this;
     const { isLoading, user, travel } = this.state;
 
@@ -241,6 +255,7 @@ class ServiceProvider extends React.Component {
           travel,
           user,
           handleUpload,
+          handleUploadCoverPic,
         }}
       >
         {this.props.children}

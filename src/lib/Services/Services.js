@@ -67,11 +67,11 @@ class AxiosMethods {
       .then(({ data }) => data);
   }
 
-  editProfile({ _id, userName, userFrom, userBirthdate, about, profilePic }) {
+  editProfile({ _id, username, userFrom, userBirthdate, about, profilePic }) {
     return this.axiosBaseRoute
       .post(`/profile/edit/${_id}`, {
         _id,
-        userName,
+        username,
         userFrom,
         userBirthdate,
         about,
