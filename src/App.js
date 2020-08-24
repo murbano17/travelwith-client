@@ -9,10 +9,12 @@ import Home from "./pages/Home";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonRoute from "./components/AnonRoute";
 import ServiceProvider from "./lib/Services/ServicesProvider";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <AuthProvider>
+    <Navbar/>
       <ServiceProvider>
         <div className="Container">
           <Switch>

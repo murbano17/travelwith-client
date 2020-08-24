@@ -9,7 +9,8 @@ class AxiosMethods {
   }
 
   getTravelsList() {
-    return this.axiosBaseRoute.get("/travel", {}).then(({ data }) => data)
+    return this.axiosBaseRoute.get("/travel", {})
+    .then(({ data }) => data)
     
   }
 

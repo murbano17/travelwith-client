@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 function Home() {
   return (
     <div className="home-container">
-      <Navbar />
       <Carousel />
     </div>
   );

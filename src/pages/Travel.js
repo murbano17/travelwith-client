@@ -1,41 +1,35 @@
 import React, { Component } from "react";
-import { withServices } from '../lib/Services/ServicesProvider'
+import { withServices } from "../lib/Services/ServicesProvider";
 import TravelCard from "../components/TravelCard";
 
 class Travel extends Component {
-constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-    travelList: []
-
+    this.state = {
+      travelList: [],
+    };
   }
 
-  
-}
+  getList = () => {
+    return this.props
+      .getTravelsList()
+      .then((res) => console.log("HOLA", res))
+      .catch((err) => console.log(err));
+  };
 
-getList = () => {
-  return ( 
-  this.props.getTravelsList()
-  .then(res => console.log('HOLA', res)))
-  .catch(err => console.log(err))
-}
-
-componentDidMount () {
-  this.getList()  
-}
-
-
+  componentDidMount() {
+    this.getTravelsList();
+  }
 
   render() {
-    console.log('ACAAAAAAAAAA', this.state.travelList)
+    const { travel } = this.props;
     return (
       <div className="travelList-container">
-        {this.state.travelList.map(eachTravel => {
-          return <TravelCard key={eachTravel._id} {...eachTravel} />
+        {this.state.travel.map((eachTravel) => {
+          return <TravelCard key={eachTravel._id} {...eachTravel} />;
         })}
       </div>
-    ) 
-
+    );
   }
 }
 
