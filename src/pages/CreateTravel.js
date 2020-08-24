@@ -39,7 +39,11 @@ class CreateTravel extends Component {
   };
 
   handleChange = (event) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    if (name === "isPublic" && value === "on"){
+      value = !this.state.isPublic
+  }
+
     this.setState({ [name]: value });
   };
 
@@ -50,7 +54,7 @@ class CreateTravel extends Component {
     uploadData.append("coverPic", event.target.files[0]);
 
     this.props
-      .handleUpload(uploadData)
+      .handleUploadCoverPic(uploadData)
       .then((response) => {
         console.log("response is:", response);
         this.setState({ coverPic: response.secure_url })
@@ -61,7 +65,6 @@ class CreateTravel extends Component {
   };
 
   render() {
-    console.log("PROPSSS", this.props);
     return (
       <div>
         <h1>Create your travel</h1>
@@ -70,7 +73,7 @@ class CreateTravel extends Component {
           <input
             type="text"
             name="travelName"
-            value={this.travelName}
+            value={this.state.travelName}
             onChange={this.handleChange}
           />
 
@@ -78,7 +81,7 @@ class CreateTravel extends Component {
           <input
             type="Date"
             name="startDate"
-            value={this.startDate}
+            value={this.state.startDate}
             onChange={this.handleChange}
           />
 
@@ -86,7 +89,7 @@ class CreateTravel extends Component {
           <input
             type="Date"
             name="endDate"
-            value={this.endDate}
+            value={this.state.endDate}
             onChange={this.handleChange}
           />
 
@@ -94,7 +97,6 @@ class CreateTravel extends Component {
           <input
             type="file"
             name="coverPic"
-            value={this.coverPic}
             onChange={this.handleFileUpload}
           />
 
@@ -102,7 +104,7 @@ class CreateTravel extends Component {
           <input
             type="text"
             name="origin"
-            value={this.origin}
+            value={this.state.origin}
             onChange={this.handleChange}
           />
 
@@ -110,7 +112,7 @@ class CreateTravel extends Component {
           <input
             type="text"
             name="destination"
-            value={this.destination}
+            value={this.state.destination}
             onChange={this.handleChange}
           />
 
@@ -118,7 +120,7 @@ class CreateTravel extends Component {
           <input
             type="checkbox"
             name="isPublic"
-            value={this.isPublic}
+            checked={this.state.isPublic}
             onChange={this.handleChange}
           />
 
