@@ -11,7 +11,10 @@ import AuthProvider from "./lib/Services/AuthProvider";
 import Navbar from "./components/Navbar";
 import CreateTravel from "./pages/CreateTravel";
 import { ServiceProvider } from "./lib/Services/ServicesProvider";
-import TravelDetails from "./components/TravelCard";
+import TravelDetails from "./components/TravelDetails";
+import Profile from './pages/Profile'
+import EditProfile from './pages/EditProfile'
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -26,16 +29,11 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/travel" component={Travel} />
 
-              <PrivateRoute
-                exact
-                path="/travel/create"
-                component={CreateTravel}
-              />
-              <PrivateRoute
-                exact
-                path="/travel/:id"
-                component={TravelDetails}
-              />
+              <PrivateRoute exact path="/travel/create" component={CreateTravel}/>
+              <PrivateRoute exact path="/travel/:id" component={TravelDetails} />
+              <PrivateRoute exact path='/profile/:id' component={Profile}/>
+              <PrivateRoute exact path='/profile/:id/dashboard' component={Dashboard}/>
+              <PrivateRoute exact path='/profile/edit/:id' component={EditProfile}/>
             </Switch>
           </ServiceProvider>
         </Switch>
