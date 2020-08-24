@@ -58,11 +58,13 @@ class ServiceProvider extends React.Component {
   }
 
   getTravelsList = () => {
+    return (
     services
       .getTravelsList()
-      .then((res) => console.log('RESSSSSS', res))
-      .catch((err) => console.log(err));
-  };
+      .then((res) => res)
+      .then(resp => resp)
+      .catch((err) => console.log(err))
+      )};
 
   createTravel = (travel) => {
     const {
@@ -232,5 +234,4 @@ class ServiceProvider extends React.Component {
   }
 }
 
-export { Consumer, withServices };
-export default ServiceProvider;
+export { Consumer, withServices, ServiceProvider };

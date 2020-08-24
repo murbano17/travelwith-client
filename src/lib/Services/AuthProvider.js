@@ -88,6 +88,10 @@ class AuthProvider extends React.Component {
       <Provider value={{ isLoggedin, user, login, logout, signup }}>
         {this.props.children}
       </Provider>
+
+
+
+    
     );
   }
 }
