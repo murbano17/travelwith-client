@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
 import TravelCard from "../components/TravelCard";
+import { withAuth } from "../lib/Services/AuthProvider";
 
 class Travel extends Component {
   constructor(props) {
@@ -28,4 +29,4 @@ class Travel extends Component {
   }
 }
 
-export default withServices(Travel);
+export default withAuth(Travel);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
+import { withAuth } from "../lib/Services/AuthProvider";
 
 class Maps extends Component {
   constructor(props) {
@@ -68,4 +69,4 @@ class Maps extends Component {
   }
 }
 
-export default withServices(Maps);
+export default withAuth(Maps);

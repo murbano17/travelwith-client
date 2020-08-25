@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
 import { Link } from "react-router-dom";
+import { withAuth } from "../lib/Services/AuthProvider";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -94,4 +95,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withServices(Dashboard);
+export default withAuth(Dashboard);

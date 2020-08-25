@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
+import { withAuth } from "../lib/Services/AuthProvider";
 
 class Tasks extends Component {
   constructor(props) {
@@ -106,4 +107,4 @@ class Tasks extends Component {
   }
 }
 
-export default withServices(Tasks);
+export default withAuth(Tasks);

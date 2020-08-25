@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+import { withAuth } from "../lib/Services/AuthProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -115,4 +116,4 @@ class EditProfile extends Component {
   }
 }
 
-export default withServices(EditProfile);
+export default withAuth(EditProfile);

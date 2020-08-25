@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
 import { Link } from "react-router-dom";
+import { withAuth } from "../lib/Services/AuthProvider";
 
 class Profile extends Component {
   constructor(props) {
@@ -39,4 +40,4 @@ class Profile extends Component {
   }
 }
 
-export default withServices(Profile);
+export default withAuth(Profile);

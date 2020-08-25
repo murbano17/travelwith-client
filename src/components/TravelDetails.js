@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withServices } from "../lib/Services/ServicesProvider";
+// import { withServices } from "../lib/Services/ServicesProvider";
 import { Link } from "react-router-dom";
+import { withAuth } from "../lib/Services/AuthProvider";
 
 
 export class TravelDetails extends Component {
@@ -68,4 +69,4 @@ export class TravelDetails extends Component {
   }
 }
 
-export default withServices(TravelDetails);
+export default withAuth(TravelDetails);
