@@ -41,6 +41,10 @@ class Auth {
   logout() {
     return this.auth.post("/logout", {}).then(({ data }) => data);
   }
+
+  me() {
+    return this.auth.get("/me").then(({ data }) => data);
+  }
 }
 const axiosRequestFunctions = new Auth();
 export default axiosRequestFunctions;

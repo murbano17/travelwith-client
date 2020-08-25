@@ -30,6 +30,13 @@ class AuthProvider extends React.Component {
   state = { isLoggedin: false, user: null, isLoading: true };
 
   componentDidMount() {
+    auth.me
+      .then((user) =>
+        this.setState({ isLoggedin: true, user: user, isLoading: false })
+      )
+      .catch((err) =>
+        this.setState({ isLoggedin: false, user: null, isLoading: false })
+      );
     this.setState({ isLoading: false });
   }
 
@@ -88,10 +95,6 @@ class AuthProvider extends React.Component {
       <Provider value={{ isLoggedin, user, login, logout, signup }}>
         {this.props.children}
       </Provider>
-
-
-
-    
     );
   }
 }
