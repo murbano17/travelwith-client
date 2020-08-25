@@ -48,7 +48,7 @@ class Auth {
   }
 
   getTravelsList() {
-    return this.axiosBaseRoute.get("/travel", {}).then(({ data }) => data);
+    return this.auth.get("/travel", {}).then(({ data }) => data);
   }
 
   createTravel({
@@ -60,7 +60,7 @@ class Auth {
     isPublic,
     coverPic,
   }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post("/travel/create", {
         travelName,
         startDate,
@@ -82,7 +82,7 @@ class Auth {
     destination,
     coverPic,
   }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/travel/edit/${_id}`, {
         travelName,
         startDate,
@@ -95,19 +95,19 @@ class Auth {
   }
 
   deleteTravel(_id) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/travel/delete/${_id}`, {})
       .then(({ data }) => data);
   }
 
   getProfile(_id) {
-    return this.axiosBaseRoute
+    return this.auth
       .get(`/profile/${_id}`, {})
       .then(({ data }) => data);
   }
 
   editProfile({ _id, username, userFrom, userBirthdate, about, profilePic }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/profile/edit/${_id}`, {
         _id,
         username,
@@ -120,31 +120,31 @@ class Auth {
   }
 
   createTask({ _id, taskName }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/travel/${_id}/createtask`, { taskName })
       .then(({ data }) => data);
   }
 
   editTask({ _id, taskName, taskDeadline, assignTo, taskNote, doneTask }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/task/edit/${_id}`, { taskName, taskDeadline, assignTo, taskNote, doneTask })
       .then(({ data }) => data);
   }
 
   deleteTask({ _id }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/task/delete/${_id}`, {})
       .then(({ data }) => data);
   }
 
   createInvitation({ _id, guestEmail }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/travel/${_id}/createinvite`, { guestEmail })
       .then(({ data }) => data);
   }
 
   joinTravel({ _id }) {
-    return this.axiosBaseRoute
+    return this.auth
       .post(`/travel/${_id}/join`, {})
       .then(({ data }) => data);
   }
