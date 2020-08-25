@@ -24,6 +24,7 @@ const withServices = (WrappedComponent) => {
             user,
             handleUpload,
             handleUploadCoverPic,
+            editTravel,
           }) => {
             return (
               <WrappedComponent
@@ -38,6 +39,7 @@ const withServices = (WrappedComponent) => {
                 createInvitation={createInvitation}
                 joinTravel={joinTravel}
                 travel={travel}
+                editTravel={editTravel}
                 user={user}
                 handleUpload={handleUpload}
                 handleUploadCoverPic={handleUploadCoverPic}
@@ -162,10 +164,9 @@ class ServiceProvider extends React.Component {
   };
 
   editTask = (task) => {
-    const { _id, taskName, taskDeadline, assignTo, taskNote } = task;
-
+    const { _id, taskName, taskDeadline, assignTo, taskNote, doneTask} = task;
     return services
-      .editTask({ _id, taskName, taskDeadline, assignTo, taskNote })
+      .editTask({ _id, taskName, taskDeadline, assignTo, taskNote, doneTask })
       .then((task) => console.log(task + "edited"))
       .catch((err) => console.log(err));
   };
@@ -234,6 +235,7 @@ class ServiceProvider extends React.Component {
       joinTravel,
       handleUpload,
       handleUploadCoverPic,
+      editTravel,
     } = this;
     const { isLoading, user, travel } = this.state;
 
@@ -256,6 +258,7 @@ class ServiceProvider extends React.Component {
           user,
           handleUpload,
           handleUploadCoverPic,
+          editTravel,
         }}
       >
         {this.props.children}

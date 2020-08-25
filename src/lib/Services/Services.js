@@ -86,9 +86,9 @@ class AxiosMethods {
       .then(({ data }) => data);
   }
 
-  editTask({ _id, taskName, taskDeadline, assignTo, taskNote }) {
+  editTask({ _id, taskName, taskDeadline, assignTo, taskNote, doneTask }) {
     return this.axiosBaseRoute
-      .post(`/task/edit/${_id}`, { taskName, taskDeadline, assignTo, taskNote })
+      .post(`/task/edit/${_id}`, { taskName, taskDeadline, assignTo, taskNote, doneTask })
       .then(({ data }) => data);
   }
 

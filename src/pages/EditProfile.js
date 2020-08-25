@@ -45,6 +45,8 @@ class EditProfile extends Component {
       _id,
       userBirthdate,
     });
+
+    this.props.history.push(`/profile/${this.state.userId}`)
   };
 
   handleChange = (event) => {
@@ -80,7 +82,7 @@ class EditProfile extends Component {
             type="text"
             value={this.username}
             onChange={this.handleChange}
-            placeholder={this.username}
+            placeholder={this.state.username}
           />
           <label>From</label>
           <input
@@ -88,7 +90,7 @@ class EditProfile extends Component {
             type="text"
             value={this.userFrom}
             onChange={this.handleChange}
-            placeholder={this.userFrom}
+            placeholder={this.state.userFrom}
           />
           <label>About</label>
           <input
@@ -96,7 +98,7 @@ class EditProfile extends Component {
             type="text"
             value={this.about}
             onChange={this.handleChange}
-            placeholder={this.about}
+            placeholder={this.state.about}
           />
 
           <label>Cover Picture:</label>

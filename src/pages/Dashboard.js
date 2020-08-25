@@ -31,6 +31,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-container">
+      <h2>Organizer of: </h2>
         <div className="ownTravels-container">
           {this.state.travelsOwned &&
             this.state.travelsOwned.map((eachTravel) => {
@@ -38,6 +39,7 @@ class Dashboard extends Component {
                 <Link
                   style={{ textDecoration: "none", color: "black" }}
                   to={`/travel/${eachTravel._id}`}
+                  key={eachTravel._id}
                 >
                   <div className="card" style={{ width: "18rem" }}>
                     <img
@@ -59,12 +61,14 @@ class Dashboard extends Component {
             })}
         </div>
         <div className="joinedTravels-container">
+        <h2>Member of</h2>
           {this.state.travelsJoined &&
             this.state.travelsJoined.map((eachTravel) => {
               return (
                 <Link
                   style={{ textDecoration: "none", color: "black" }}
                   to={`/travel/${eachTravel._id}`}
+                  key={eachTravel._id}
                 >
                   <div className="card" style={{ width: "18rem" }}>
                     <img

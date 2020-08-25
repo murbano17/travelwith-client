@@ -36,6 +36,9 @@ class CreateTravel extends Component {
       isPublic,
       coverPic,
     });
+
+    this.props.history.push('/travel')
+
   };
 
   handleChange = (event) => {
@@ -65,6 +68,7 @@ class CreateTravel extends Component {
   };
 
   render() {
+
     return (
       <div>
         <h1>Create your travel</h1>
@@ -124,7 +128,7 @@ class CreateTravel extends Component {
             onChange={this.handleChange}
           />
 
-          <input type="submit" value="Create travel" />
+          <input type="submit" value="Create travel"/>
         </form>
       </div>
     );

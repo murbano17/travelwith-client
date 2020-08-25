@@ -28,16 +28,17 @@ export class TravelDetails extends Component {
     
     return (
       <div className="card" style={{ width: "18rem" }}>
-        <div>
+        <div className='img-container'>
           <img src={travel.coverPic} className="card-img-top" alt="cover pic" />
         </div>
-        <div className="card-body">
+        <div className="card-body travel-info-container">
           <h5 className="card-title">{travel.travelName}</h5>
           <p className="card-text">Start date: {travel.startDate}</p>
           <p className="card-text">End date: {travel.endDate}</p>
           <p className="card-text">Origin: {travel.origin}</p>
           <p className="card-text">Destination: {travel.destination}</p>
-          {/* <p className="card-text">Destination: {travel.travelM}</p> */}
+        </div>
+        <div className='travelMembers-container'>  
           { travel.travelMembers && travel.travelMembers.map((eachMember) => {
             return (
               <div key={eachMember._id}>
@@ -46,10 +47,22 @@ export class TravelDetails extends Component {
               </div>
             );
           })}
+        </div>
+        <div className='tasks-container' style={{border:'2px solid green'}}>
+          BOTON MAPA
+        </div>
+        <div className='tasks-container' style={{border:'2px solid red'}}>
+          <Link to={`/travel/${travel._id}/tasks`}>View Tasks</Link>
+        </div>
+        <div className='tasks-container' style={{border:'2px solid blue'}}>
+        <Link to={`/travel/edit/${travel._id}`}>Edit this Travel</Link>
+        </div>
+        <div className='tasks-container' style={{border:'2px solid orange'}}>
+          BARRA DE PROGRESO
+        </div>
           <Link className="btn btn-primary" to={`/travel/${travel._id}/join`}>
             Join travel
           </Link>
-        </div>
       </div>
     );
   }
