@@ -29,25 +29,36 @@ class Login extends Component {
       <div className="login-container">
         <h1>Login</h1>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Email</label>
-          <input
-            name="email"
-            type="text"
-            value={this.email}
-            onChange={this.handleChange}
-          />
-          <label>Password</label>
-          <input
-            name="password"
-            type="password"
-            value={this.password}
-            onChange={this.handleChange}
-          />
-
-          <input type="submit" value="Login" />
+          <div className="form-group">
+            <label>
+              <b>Email</b>
+            </label>
+            <input
+              className="form-control"
+              name="email"
+              type="text"
+              value={this.email}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>
+              <b>Password</b>
+            </label>
+            <input
+              className="form-control"
+              name="password"
+              type="password"
+              value={this.password}
+              onChange={this.handleChange}
+            />
+          </div>
+          <input type="submit" value="Login" className="btn btn-secondary" />
         </form>
-        <p>
-          Don't have an account? <Link to={"/signup"}> Create one</Link>
+        <p className="account">
+          Don't have an account?  
+          <Link className="link" to={"/signup"}> Create one
+          </Link>
         </p>
       </div>
     );

@@ -49,76 +49,112 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Sign Up!</h1>
+      <div className='signup-container'>
+        <h1>Sign up!</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={this.username}
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label>
+              <b>Username:</b>
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="username"
+              value={this.username}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            value={this.email}
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label>
+              <b>Email:</b>
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="email"
+              value={this.email}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={this.password}
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label>
+              <b>Password:</b>
+            </label>
+            <input
+              className="form-control"
+              type="password"
+              name="password"
+              value={this.password}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <label>Profile picture:</label>
-          <input
-            type="file"
-            name="profilePic"
-            value={this.profilePic}
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label>
+              <b>Profile picture:</b>
+            </label>
+            <input
+              className="form-control"
+              type="file"
+              name="profilePic"
+              value={this.profilePic}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>
+              <b>From:</b>
+            </label>
+            <input
+              className="form-control"
+              type="text"
+              name="userFrom"
+              value={this.userFrom}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <label>From:</label>
-          <input
-            type="text"
-            name="userFrom"
-            value={this.userFrom}
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label>
+              <b>Birthdate:</b>
+            </label>
+            <input
+              className="form-control"
+              type="Date"
+              name="userBirthdate"
+              value={this.userBirthdate}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <label>Birthdate:</label>
-          <input
-            type="Date"
-            name="userBirthdate"
-            value={this.userBirthdate}
-            onChange={this.handleChange}
-          />
+          <div className="form-group">
+            <label>
+              <b>About:</b>
+            </label>
+            <input
+              className="form-control"
+              type="text-area"
+              name="about"
+              value={this.about}
+              onChange={this.handleChange}
+            />
+          </div>
 
-          <label>About:</label>
-          <input
-            type="text-area"
-            name="about"
-            value={this.about}
-            onChange={this.handleChange}
-          />
-
-          <input
-            type="hidden"
-            name="invitationCode"
-            value={this.invitationCode}
-            onChange={this.handleChange}
-          />
-
-          <input type="submit" value="Sign Up" />
+          <div className="form-group">
+            <input
+              className="form-control"
+              type="hidden"
+              name="invitationCode"
+              value={this.invitationCode}
+              onChange={this.handleChange}
+            />
+          </div>
+          <input type="submit" value="Sign up" className="btn btn-secondary" />
         </form>
-        <p>
-          Already have account? <Link to={"/login"}>Log in</Link>
+        <p className="account">
+          Already have account? <Link to={"/login"}> Log in</Link>
         </p>
       </div>
     );
