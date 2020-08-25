@@ -38,7 +38,7 @@ class Profile extends Component {
                 <b>About me:</b> {user.about}
               </p>
             </div>
-            {this.props.user._id == user._id ? (
+            {this.props.user._id === user._id ? (
               <div className="links-profile">
                 <Link to={`/profile/${user._id}/dashboard`}>
                   <p>My dashboard</p>

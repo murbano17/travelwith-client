@@ -17,24 +17,25 @@ class InviteInput extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { emailInvite } = this.state;
+    const travel = this.props.travel;
 
-    this.props.createInvitation({});
+    this.props.createInvitation(travel, emailInvite)
 
-    this.props.history.push(`/profile/${this.state.userId}`);
   };
 
   render() {
     return (
       <div>
         <h2>Invite a friend</h2>
-        <form onSubmit={this.handleFormSubmit}></form>
+        <form onSubmit={this.handleFormSubmit}>
         <input
           type="text"
-          name="inputInvite"
+          name="emailInvite"
           value={this.state.emailInvite}
           onChange={this.handleChange}
         />
         <input type="submit" value="Send Invites" />
+        </form>
       </div>
     );
   }
