@@ -29,7 +29,7 @@ class Profile extends Component {
           <h5 className="card-title">{user.username}</h5>
           <p className="card-text">From: {user.userFrom}</p>
           <p className="card-text">About: {user.about}</p>
-          {this.props.user._id == user._id ? (
+          {this.props.user._id === user._id ? (
             <div>
               <Link
                 className="btn btn-primary"

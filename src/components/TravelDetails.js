@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { withServices } from "../lib/Services/ServicesProvider";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
+import InviteInput from "./InviteInput";
 
 
 export class TravelDetails extends Component {
@@ -64,6 +65,9 @@ export class TravelDetails extends Component {
           <Link className="btn btn-primary" to={`/travel/${travel._id}/join`}>
             Join travel
           </Link>
+            <InviteInput />
+          
+          
       </div>
     );
   }

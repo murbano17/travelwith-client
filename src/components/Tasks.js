@@ -33,17 +33,14 @@ class Tasks extends Component {
       .catch((err) => console.log(err));
   };
 
-  // componentDidUpdate() {
-  //   return this.props
-  //     .getTravelsList()
-  //     .then((resp) =>
-  //       resp.filter((eachTravel) => eachTravel._id === this.state.travelId)
-  //     )
-  //     .then((res) =>
-  //       this.setState({ tasksArr: res[0].tasks, travelToShow: res[0] })
-  //     )
-  //     .catch((err) => console.log(err));
-  // }
+  handleDeleteTask = (e, task) => {
+
+    return (
+      this.props.deleteTask(task)
+      .then(() => this.getTravels())
+      .catch(err => console.log(err))
+    )  
+  }
 
   handleChange = (event) => {
     let { name, value } = event.target;
@@ -64,26 +61,28 @@ class Tasks extends Component {
     this.setState({ taskName: "" });
   };
 
-  // completeTask = (task) => {
-  //   let { doneTask } = task;
-  //   let taskIsDone = doneTask
-  //   // !taskIsDone ? taskIsDone = true : taskIsDone = false
-  //   switch(taskIsDone) {
-  //     case true:
-  //       taskIsDone = false;
-  //       break;
-  //     case false:
-  //       taskIsDone = true;
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   console.log('esto', taskIsDone)
-  //   this.props.editTask(doneTask)
+  handleDoneTask = (e, task) => {
+    const { _id, taskName, taskDeadline, assignTo, taskNote, doneTask } = task
+    let doneTaskState = !doneTask
 
-  // };
+    const updatedTask = {
+      _id,
+      taskName,
+      taskDeadline, 
+      assignTo,
+      taskNote,
+      doneTask: doneTaskState
+    }
+
+    return (
+      this.props.editTask(updatedTask)
+      .then(() => this.getTravels())
+      .catch(err => console.log(err))
+    )
+  }
 
   render() {
+    let classDone
     return (
       <div className="toDoList-container">
         <form onSubmit={this.handleFormSubmit}>
@@ -98,10 +97,12 @@ class Tasks extends Component {
         <ul>
           {this.state.tasksArr &&
             this.state.tasksArr.map((eachTask) => (
+              // eslint-disable-next-line no-sequences
+              eachTask.doneTask ? classDone = 'done' : classDone = 'undone',
               <li key={eachTask._id}>
                 <div>
-                  <p>{eachTask.taskName}</p>
-                  <button onClick={() => this.props.deleteTask(eachTask)}>
+                  <p className={classDone} onClick={(e) => this.handleDoneTask(e, eachTask)}>{eachTask.taskName}</p>
+                  <button onClick={(e) => this.handleDeleteTask(e, eachTask)}>
                     X
                   </button>
                 </div>

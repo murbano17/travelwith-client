@@ -2,3 +2,24 @@
   background-color: #f3f3f3;
   height: 100vh;
 }
+
+.done {
+  color: lightgray;
+  text-decoration: line-through #FF6525;
+  text-decoration-thickness: 4px;
+}
+
+#tags {
+  border:1px solid #ccc;
+  padding:5px;
+}
+
+#tags > span {
+  display:block;
+  float:left;
+  color:rgba(0, 0, 0, 0.71);
+  background:rgba(128, 128, 128, 0.43);
+  padding:5px;
+  padding-right:25px;
+  margin:4px;
+}
