@@ -23,28 +23,35 @@ class Profile extends Component {
   render() {
     let user = this.state.userToShow;
     return (
-      <div className="card" style={{ width: "18rem" }}>
-        <img src={user.profilePic} className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">{user.username}</h5>
-          <p className="card-text">From: {user.userFrom}</p>
-          <p className="card-text">About: {user.about}</p>
-          {this.props.user._id == user._id ? (
-            <div>
-              <Link
-                className="btn btn-primary"
-                to={`/profile/edit/${user._id}`}
-              >
-                Edit user
-              </Link>
-              <Link
-                className="btn btn-primary"
-                to={`/profile/${user._id}/dashboard`}
-              >
-                Dashboard
-              </Link>
+      <div className="profile-container">
+        <div className="profile-card">
+          <div className="profile-image">
+            <img src={user.profilePic} alt="user-pic" />
+          </div>
+          <div>
+            <h5>{user.username}</h5>
+            <div className="profile-info">
+              <p>
+                <b>From:</b> {user.userFrom}
+              </p>
+              <p>
+                <b>About me:</b> {user.about}
+              </p>
             </div>
-          ) : null}
+            {this.props.user._id == user._id ? (
+              <div className="links-profile">
+                <Link to={`/profile/${user._id}/dashboard`}>
+                  <p>My dashboard</p>
+                </Link>
+                <Link to={`/profile/edit/${user._id}`}>
+                  <p>
+                    {" "}
+                    <i className="fas fa-edit icon" />
+                  </p>
+                </Link>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
     );
