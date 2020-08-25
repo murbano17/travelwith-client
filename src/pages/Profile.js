@@ -9,6 +9,7 @@ class Profile extends Component {
     this.state = {
       userId: props.match.params.id,
       userToShow: [],
+      currentUser: "",
     };
   }
 
@@ -20,7 +21,7 @@ class Profile extends Component {
   }
 
   render() {
-    let user = this.state.userToShow
+    let user = this.state.userToShow;
     return (
       <div className="card" style={{ width: "18rem" }}>
         <img src={user.profilePic} className="card-img-top" alt="..." />
@@ -28,12 +29,22 @@ class Profile extends Component {
           <h5 className="card-title">{user.username}</h5>
           <p className="card-text">From: {user.userFrom}</p>
           <p className="card-text">About: {user.about}</p>
-          <Link className="btn btn-primary" to={`/profile/edit/${user._id}`}>
-            Edit user
-          </Link>
-          <Link className="btn btn-primary" to={`/profile/${user._id}/dashboard`}>
-            Dashboard
-          </Link>
+          {this.props.user._id == user._id ? (
+            <div>
+              <Link
+                className="btn btn-primary"
+                to={`/profile/edit/${user._id}`}
+              >
+                Edit user
+              </Link>
+              <Link
+                className="btn btn-primary"
+                to={`/profile/${user._id}/dashboard`}
+              >
+                Dashboard
+              </Link>
+            </div>
+          ) : null}
         </div>
       </div>
     );

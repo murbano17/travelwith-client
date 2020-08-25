@@ -14,6 +14,10 @@ class Tasks extends Component {
   }
 
   componentDidMount() {
+    this.getTravels();
+  }
+
+  getTravels = () => {
     return this.props
       .getTravelsList()
       .then((resp) =>
@@ -27,7 +31,7 @@ class Tasks extends Component {
         })
       )
       .catch((err) => console.log(err));
-  }
+  };
 
   // componentDidUpdate() {
   //   return this.props
@@ -50,7 +54,12 @@ class Tasks extends Component {
     event.preventDefault();
     const { taskName, travelToShow } = this.state;
 
-    this.props.createTask(travelToShow, taskName);
+    this.props
+      .createTask(travelToShow, taskName)
+      .then((travel) => {
+        this.setState({ taskName: "" }, () => this.getTravels());
+      })
+      .catch((err) => console.log(err));
 
     this.setState({ taskName: "" });
   };
@@ -58,12 +67,12 @@ class Tasks extends Component {
   // completeTask = (task) => {
   //   let { doneTask } = task;
   //   let taskIsDone = doneTask
-  //   // !taskIsDone ? taskIsDone = true : taskIsDone = false 
+  //   // !taskIsDone ? taskIsDone = true : taskIsDone = false
   //   switch(taskIsDone) {
   //     case true:
   //       taskIsDone = false;
   //       break;
-  //     case false: 
+  //     case false:
   //       taskIsDone = true;
   //       break;
   //     default:
@@ -71,7 +80,6 @@ class Tasks extends Component {
   //   }
   //   console.log('esto', taskIsDone)
   //   this.props.editTask(doneTask)
-    
 
   // };
 
@@ -92,9 +100,7 @@ class Tasks extends Component {
             this.state.tasksArr.map((eachTask) => (
               <li key={eachTask._id}>
                 <div>
-                  <p>
-                    {eachTask.taskName}
-                  </p>
+                  <p>{eachTask.taskName}</p>
                   <button onClick={() => this.props.deleteTask(eachTask)}>
                     X
                   </button>
