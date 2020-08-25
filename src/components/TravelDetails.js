@@ -65,7 +65,7 @@ export class TravelDetails extends Component {
           <Link className="btn btn-primary" to={`/travel/${travel._id}/join`}>
             Join travel
           </Link>
-            <InviteInput />
+            <InviteInput travel={travel}/>
           
           
       </div>

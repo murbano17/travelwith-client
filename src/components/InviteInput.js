@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
 
 class InviteInput extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      inputInvite: "",
+      emailInvite: "",
     };
   }
 
@@ -14,18 +14,27 @@ class InviteInput extends Component {
     this.setState({ [name]: value });
   };
 
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    const { emailInvite } = this.state;
+
+    this.props.createInvitation({});
+
+    this.props.history.push(`/profile/${this.state.userId}`);
+  };
+
   render() {
     return (
       <div>
-        <div id="tags">
-          <input
-            type="text"
-            name='inputInvite'
-            value={this.state.inputInvite}
-            onChange={this.handleChange}
-          />
-          {/* <input type="submit" value='Send Invites'/> */}
-        </div>
+        <h2>Invite a friend</h2>
+        <form onSubmit={this.handleFormSubmit}></form>
+        <input
+          type="text"
+          name="inputInvite"
+          value={this.state.emailInvite}
+          onChange={this.handleChange}
+        />
+        <input type="submit" value="Send Invites" />
       </div>
     );
   }
