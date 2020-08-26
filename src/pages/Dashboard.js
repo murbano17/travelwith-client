@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { withServices } from "../lib/Services/ServicesProvider";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
+import NotificationPanel from "../components/NotificationPanel";
 
 
 class Dashboard extends Component {
@@ -11,6 +12,7 @@ class Dashboard extends Component {
       travelsOwned: [],
       travelsJoined: [],
       userId: props.match.params.id,
+      userToShow: ''
     };
   }
 
@@ -22,6 +24,7 @@ class Dashboard extends Component {
         this.setState({
           travelsOwned: resp.ownTravels,
           travelsJoined: resp.joinTravels,
+          userToShow: resp
         })
       )
       .catch((err) => console.log(err));
@@ -33,6 +36,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-container">
+      <h2>Pending invitations</h2>
+      <NotificationPanel user={this.state.userToShow} />
       <h2>Organizer of: </h2>
         <div className="ownTravels-container">
           {this.state.travelsOwned &&
@@ -62,8 +67,8 @@ class Dashboard extends Component {
               );
             })}
         </div>
-        <div className="joinedTravels-container">
         <h2>Member of</h2>
+        <div className="joinedTravels-container">
           {this.state.travelsJoined &&
             this.state.travelsJoined.map((eachTravel) => {
               return (
