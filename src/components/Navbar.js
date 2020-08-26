@@ -13,7 +13,7 @@ class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light ">
+      <nav className="navbar navbar-expand-lg navbar-light bg-custom ">
         <button
           className="navbar-toggler button-navbar"
           type="button"
