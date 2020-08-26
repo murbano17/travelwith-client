@@ -45,7 +45,7 @@ class Profile extends Component {
                 </Link>
                 <Link to={`/profile/edit/${user._id}`}>
                   <p>
-                    {" "}
+
                     <i className="fas fa-edit icon" />
                   </p>
                 </Link>

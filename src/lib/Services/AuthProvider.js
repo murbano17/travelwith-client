@@ -176,7 +176,7 @@ class AuthProvider extends React.Component {
       _id,
     } = travel;
 
-    return auth
+    auth
       .editTravel({
         travelName,
         startDate,

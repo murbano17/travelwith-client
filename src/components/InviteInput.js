@@ -6,8 +6,35 @@ class InviteInput extends Component {
     super(props);
     this.state = {
       emailInvite: "",
+      isMessageShown: false,
     };
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    return this.state.isMessageShown
+      ? (this.hideMessage = setTimeout(() => {
+          this.setState(() => ({ isMessageShown: false }));
+        }, 3000))
+      : null;
+  };
+  componentWillUnmount = () => {
+    clearTimeout(this.hideMessage);
+  };
+
+  showMessage = () => {
+    let messageUpdated = !this.state.isMessageShown;
+    this.setState({ isMessageShown: messageUpdated });
+  };
+  /* 
+  showMessage = (e) => {
+    this.changeState();
+    setTimeout(() => this.setState(this.changeState), 5000);
+  };
+
+  changeState = () => {
+    let messageUpdated = !this.state.isMessageShown;
+    this.setState({ isMessageShown: messageUpdated });
+  }; */
 
   handleChange = (event) => {
     let { name, value } = event.target;
@@ -19,8 +46,8 @@ class InviteInput extends Component {
     const { emailInvite } = this.state;
     const travel = this.props.travel;
 
-    this.props.createInvitation(travel, emailInvite)
-
+    this.props.createInvitation(travel, emailInvite);
+    this.setState({ emailInvite: "" });
   };
 
   render() {
@@ -28,14 +55,23 @@ class InviteInput extends Component {
       <div>
         <h2>Invite a friend</h2>
         <form onSubmit={this.handleFormSubmit}>
-        <input
-          type="text"
-          name="emailInvite"
-          value={this.state.emailInvite}
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Send Invites" />
+          <input
+            type="text"
+            name="emailInvite"
+            value={this.state.emailInvite}
+            onChange={this.handleChange}
+          />
+          <input
+            type="submit"
+            value="Send Invites"
+            onClick={(e) => this.showMessage(e)}
+          />
         </form>
+        <div>
+          {this.state.isMessageShown ? (
+            <p>Invitation sent successfully</p>
+          ) : null}
+        </div>
       </div>
     );
   }

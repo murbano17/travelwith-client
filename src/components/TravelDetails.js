@@ -16,6 +16,8 @@ export class TravelDetails extends Component {
     this.getTravelDetails();
   }
 
+  openModal;
+
   getTravelDetails = () => {
     return this.props
       .getTravelsList()
@@ -68,54 +70,13 @@ export class TravelDetails extends Component {
                 })}
             </button>
 
-            {/* Modal */}
-            {/* <div
-              className="modal fade"
-              id="modal-travelMembers"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="exampleModalLongTitle"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">
-                      Modal title
-                    </h5>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div className="modal-body">...</div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="button" className="btn btn-primary">
-                      Save changes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
             {this.props.user.ownTravels.includes(travel._id) ||
             this.props.user.joinTravels.includes(travel._id) ? (
               <div>
                 <div className="details-travel-icons">
-                  <Link to={"#"}>
+                 <div>
                     <i className="fas fa-map-marked-alt icon card-body travel-info-container" />
-                  </Link>
+                 </div>
                   <Link to={`/travel/${travel._id}/tasks`}>
                     <i className="fas fa-tasks icon card-body travel-info-container" />
                   </Link>

@@ -40,12 +40,14 @@ class EditTravel extends Component {
           _id: res[0]._id
         })
       )
+
       .catch((err) => console.log(err));
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {
+      _id,
       travelName,
       startDate,
       endDate,
@@ -53,10 +55,10 @@ class EditTravel extends Component {
       destination,
       isPublic,
       coverPic,
-      _id,
     } = this.state;
 
     this.props.editTravel({
+      _id,
       travelName,
       startDate,
       endDate,
@@ -64,7 +66,6 @@ class EditTravel extends Component {
       destination,
       isPublic,
       coverPic,
-      _id,
     });
     this.getTravel()
     this.props.history.push("/");
@@ -75,7 +76,6 @@ class EditTravel extends Component {
     if (name === "isPublic" && value === "on") {
       value = !this.state.isPublic;
     }
-
     this.setState({ [name]: value });
   };
 
@@ -97,6 +97,7 @@ class EditTravel extends Component {
   };
 
   render() {
+    console.log("holiiiiii", this.state);
     return (
       <div className="edit-travel-container">
         <h1>Edit your Travel</h1>
@@ -190,7 +191,7 @@ class EditTravel extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <input type="submit" value="Create travel" />
+          <input type="submit" value="Edit travel" />
         </form>
       </div>
     );
