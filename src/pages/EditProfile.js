@@ -75,6 +75,7 @@ class EditProfile extends Component {
   render() {
     return (
       <div className="edit-profile-container">
+       <div className="container-form">
         <h1>Edit Profile</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <div className="form-group">
@@ -109,7 +110,7 @@ class EditProfile extends Component {
             <label>
               <b>About:</b>
             </label>
-            <input
+            <textarea
               className="form-control"
               name="about"
               type="text"
@@ -137,6 +138,7 @@ class EditProfile extends Component {
             className="btn btn-secondary"
           />
         </form>
+        </div>
       </div>
     );
   }

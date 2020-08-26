@@ -70,95 +70,101 @@ class CreateTravel extends Component {
   render() {
     return (
       <div className="create-travel-container">
-        <h1>Create your travel</h1>
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-          <div className="form-group">
-            <label>
-              <b>Travel name:</b>
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="travelName"
-              value={this.state.travelName}
-              onChange={this.handleChange}
-            />
-          </div>
+        <div className="container-form">
+          <h1>Create your travel</h1>
+          <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+            <div className="form-group">
+              <label>
+                <b>Travel name:</b>
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="travelName"
+                value={this.state.travelName}
+                onChange={this.handleChange}
+              />
+            </div>
 
-          <div className="form-group">
-            <label>
-              <b>Start date:</b>
-            </label>
-            <input
-              className="form-control"
-              type="Date"
-              name="startDate"
-              value={this.state.startDate}
-              onChange={this.handleChange}
-            />
-          </div>
+            <div className="form-group">
+              <label>
+                <b>Start date:</b>
+              </label>
+              <input
+                className="form-control"
+                type="Date"
+                name="startDate"
+                value={this.state.startDate}
+                onChange={this.handleChange}
+              />
+            </div>
 
-          <div className="form-group">
-            <label>
-              <b>End date:</b>
-            </label>
-            <input
-              className="form-control"
-              type="Date"
-              name="endDate"
-              value={this.state.endDate}
-              onChange={this.handleChange}
-            />
-          </div>
+            <div className="form-group">
+              <label>
+                <b>End date:</b>
+              </label>
+              <input
+                className="form-control"
+                type="Date"
+                name="endDate"
+                value={this.state.endDate}
+                onChange={this.handleChange}
+              />
+            </div>
 
-          <div className="form-group">
-            <label>
-              <b>Cover Picture:</b>
-            </label>
+            <div className="form-group">
+              <label>
+                <b>Cover Picture:</b>
+              </label>
+              <input
+                className="form-control"
+                type="file"
+                name="coverPic"
+                onChange={this.handleFileUpload}
+              />
+            </div>
+            <div className="form-group">
+              <label>
+                <b>Origin:</b>
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="origin"
+                value={this.state.origin}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>
+                <b>Destination:</b>
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                name="destination"
+                value={this.state.destination}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-check-label">
+                <b>Make this travel public? </b>
+              </label>
+              <input
+                type="checkbox"
+                name="isPublic"
+                checked={this.state.isPublic}
+                onChange={this.handleChange}
+              />
+            </div>
             <input
-              className="form-control"
-              type="file"
-              name="coverPic"
-              onChange={this.handleFileUpload}
+              type="submit"
+              value="Create travel"
+              className="btn btn-secondary"
             />
-          </div>
-          <div className="form-group">
-            <label>
-              <b>Origin:</b>
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="origin"
-              value={this.state.origin}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>
-              <b>Destination:</b>
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              name="destination"
-              value={this.state.destination}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label className="form-check-label">
-              <b>Make this travel public? </b>
-            </label>
-            <input
-              type="checkbox"
-              name="isPublic"
-              checked={this.state.isPublic}
-              onChange={this.handleChange}
-            />
-          </div>
-          <input type="submit" value="Create travel" className="btn btn-secondary" />
-        </form>
+          </form>
+        </div>
       </div>
     );
   }

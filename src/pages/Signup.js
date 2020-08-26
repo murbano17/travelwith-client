@@ -50,6 +50,7 @@ class Signup extends Component {
   render() {
     return (
       <div className='signup-container'>
+       <div className="container-form">
         <h1>Sign up!</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <div className="form-group">
@@ -156,6 +157,7 @@ class Signup extends Component {
         <p className="account">
           Already have account? <Link to={"/login"}> Log in</Link>
         </p>
+      </div>
       </div>
     );
   }
