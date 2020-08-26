@@ -9,43 +9,45 @@ class Travel extends Component {
     super(props);
     this.state = {
       travelList: [],
-      travelToShow: []
+      travelToShow: [],
     };
   }
 
   componentDidMount() {
     return this.props
       .getTravelsList()
-      .then((resp) => this.setState({ travelList: resp, travelToShow: resp}))
+      .then((resp) => this.setState({ travelList: resp, travelToShow: resp }))
       .catch((err) => console.log(err));
   }
 
   filterTravels = (searchString) => {
-    const lowerSearchString = searchString.toLowerCase()
-    const  travelsCopy = [...this.state.travelList]
-    const filteredTravels = travelsCopy.filter( (travelObj) => {
+    const lowerSearchString = searchString.toLowerCase();
+    const travelsCopy = [...this.state.travelList];
+    const filteredTravels = travelsCopy.filter((travelObj) => {
       const travelDestination = travelObj.destination.toLowerCase();
       const travelName = travelObj.travelName.toLowerCase();
 
-      if(travelDestination.includes(lowerSearchString)) {
+      if (travelDestination.includes(lowerSearchString)) {
         return true;
       } else if (travelName.includes(lowerSearchString)) {
         return true;
       } else {
         return false;
       }
-    })
-    this.setState({travelToShow: filteredTravels})
-
-  }
+    });
+    this.setState({ travelToShow: filteredTravels });
+  };
 
   render() {
     return (
-      <div className="travelList-container">
-      <SearchBar filterTravels={this.filterTravels}/>
-        {this.state.travelToShow.map((eachTravel) => {
-          return <TravelCard key={eachTravel._id} {...eachTravel} />;
-        })}
+      <div className="container-travel">
+        <div className="header">
+        <SearchBar  filterTravels={this.filterTravels} /></div>
+        <div className="travelList-container">
+          {this.state.travelToShow.map((eachTravel) => {
+            return <TravelCard key={eachTravel._id} {...eachTravel} />;
+          })}
+        </div>
       </div>
     );
   }

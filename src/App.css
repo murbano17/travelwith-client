@@ -12,7 +12,7 @@ a:hover {
 
 .done {
   color: lightgray;
-  text-decoration: line-through #FF6525;
+  text-decoration: line-through #ff6525;
   text-decoration-thickness: 4px;
 }
 
@@ -45,7 +45,7 @@ a:hover {
   padding: 20px;
   border-radius: 8px;
   position: relative;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .profile-image img {
@@ -57,7 +57,7 @@ a:hover {
   object-fit: cover;
   max-width: 100%;
   border-radius: 50%;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .profile-card h5 {
@@ -99,7 +99,9 @@ a:hover {
 }
 
 /*Navbar*/
-
+.bg-custom {
+  background-color: white;
+}
 .ulnavbar li {
   text-transform: uppercase;
   font-size: 1.1rem;
@@ -110,7 +112,7 @@ a:hover {
   width: 65px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .button-navbar {
@@ -132,6 +134,7 @@ a:hover {
 
 .create-travel-container h1 {
   color: #ff6525;
+  font-weight: 600;
 }
 
 /*Login*/
@@ -140,6 +143,7 @@ a:hover {
 }
 .login-container h1 {
   color: #ff6525;
+  font-weight: 600;
 }
 
 .account {
@@ -151,7 +155,106 @@ a:hover {
 }
 .signup-container h1 {
   color: #ff6525;
+  font-weight: 600;
 }
+
+/*Edit profile*/
+
+.edit-profile-container {
+  margin: 20px;
+}
+
+.edit-profile-container h1 {
+  color: #ff6525;
+  font-weight: 600;
+}
+
+/*Edit travel*/
+.edit-travel-container {
+  margin: 20px;
+}
+.edit-travel-container h1 {
+  color: #ff6525;
+  font-weight: 600;
+}
+
+/*Travel details*/
+.travel-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.card-details {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.card-title {
+  color: #ff6525;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.destination {
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.members img {
+  margin-top: 5px;
+  height: 65px;
+  width: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.details-travel-icons {
+  display: flex;
+  align-items: space-around;
+  justify-content: space-around;
+}
+/*Travel*/
+
+.travelList-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.img-card {
+  height: 150px;
+}
+.card-img-top {
+  object-fit: cover;
+  max-height: 100%;
+  width: 100%;
+}
+.card {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.25s;
+  margin: 20px;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  background: url("./images/womens.jpg") no-repeat center center / cover;
+}
+.searchbar {
+  width: 300px;
+  height: 40px;
+}
+
 @media (min-width: 858px) {
   /*Navbar*/
   .ulnavbar {

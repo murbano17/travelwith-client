@@ -47,7 +47,7 @@ class EditProfile extends Component {
       userBirthdate,
     });
 
-    this.props.history.push(`/profile/${this.state.userId}`)
+    this.props.history.push(`/profile/${this.state.userId}`);
   };
 
   handleChange = (event) => {
@@ -74,42 +74,68 @@ class EditProfile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="edit-profile-container">
         <h1>Edit Profile</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-          <label>Username</label>
-          <input
-            name="username"
-            type="text"
-            value={this.username}
-            onChange={this.handleChange}
-            placeholder={this.state.username}
-          />
-          <label>From</label>
-          <input
-            name="userFrom"
-            type="text"
-            value={this.userFrom}
-            onChange={this.handleChange}
-            placeholder={this.state.userFrom}
-          />
-          <label>About</label>
-          <input
-            name="about"
-            type="text"
-            value={this.about}
-            onChange={this.handleChange}
-            placeholder={this.state.about}
-          />
+          <div className="form-group">
+            <label>
+              <b>Username:</b>
+            </label>
+            <input
+              className="form-control"
+              name="username"
+              type="text"
+              value={this.username}
+              onChange={this.handleChange}
+              placeholder={this.state.username}
+            />
+          </div>
 
-          <label>Cover Picture:</label>
-          <input
-            type="file"
-            name="profilePic"
-            onChange={this.handleFileUpload}
-          />
+          <div className="form-group">
+            <label>
+              <b>From:</b>
+            </label>
+            <input
+              className="form-control"
+              name="userFrom"
+              type="text"
+              value={this.userFrom}
+              onChange={this.handleChange}
+              placeholder={this.state.userFrom}
+            />
+          </div>
 
-          <input type="submit" value="Edit Profile" />
+          <div className="form-group">
+            <label>
+              <b>About:</b>
+            </label>
+            <input
+              className="form-control"
+              name="about"
+              type="text"
+              value={this.about}
+              onChange={this.handleChange}
+              placeholder={this.state.about}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>
+              <b>Profile picture:</b>
+            </label>
+            <input
+              className="form-control"
+              type="file"
+              name="profilePic"
+              onChange={this.handleFileUpload}
+            />
+          </div>
+
+          <input
+            type="submit"
+            value="Edit Profile"
+            className="btn btn-secondary"
+          />
         </form>
       </div>
     );
