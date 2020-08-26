@@ -18,6 +18,10 @@ class EditTravel extends Component {
   }
 
   componentDidMount() {
+    this.updateTravel();
+  }
+
+  updateTravel() {
     return this.props
       .getTravelsList()
       .then((resp) =>
@@ -25,21 +29,25 @@ class EditTravel extends Component {
       )
       .then((res) =>
         this.setState({
-          travelName: res.travelName,
-          startDate: res.startDate,
-          endDate: res.endDate,
-          origin: res.origin,
-          destination: res.destination,
-          isPublic: res.isPublic,
-          coverPic: res.coverPic,
+          _id: res[0]._id,
+          travelName: res[0].travelName,
+          startDate: res[0].startDate,
+          endDate: res[0].endDate,
+          origin: res[0].origin,
+          destination: res[0].destination,
+          isPublic: res[0].isPublic,
+          coverPic: res[0].coverPic,
+          travel: res[0],
         })
       )
+
       .catch((err) => console.log(err));
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {
+      _id,
       travelName,
       startDate,
       endDate,
@@ -50,6 +58,7 @@ class EditTravel extends Component {
     } = this.state;
 
     this.props.editTravel({
+      _id,
       travelName,
       startDate,
       endDate,
@@ -58,8 +67,8 @@ class EditTravel extends Component {
       isPublic,
       coverPic,
     });
-
-    this.props.history.push("/travel");
+    this.updateTravel();
+    this.props.history.push("/");
   };
 
   handleChange = (event) => {
@@ -67,7 +76,6 @@ class EditTravel extends Component {
     if (name === "isPublic" && value === "on") {
       value = !this.state.isPublic;
     }
-
     this.setState({ [name]: value });
   };
 
@@ -89,6 +97,7 @@ class EditTravel extends Component {
   };
 
   render() {
+    console.log("holiiiiii", this.state);
     return (
       <div className="edit-travel-container">
         <h1>Edit your Travel</h1>
@@ -182,7 +191,7 @@ class EditTravel extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <input type="submit" value="Create travel" />
+          <input type="submit" value="Edit travel" />
         </form>
       </div>
     );

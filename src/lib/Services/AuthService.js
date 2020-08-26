@@ -80,6 +80,7 @@ class Auth {
     origin,
     destination,
     coverPic,
+    isPublic,
   }) {
     return this.auth
       .post(`/travel/edit/${_id}`, {
@@ -89,6 +90,7 @@ class Auth {
         origin,
         destination,
         coverPic,
+        isPublic,
       })
       .then(({ data }) => data);
   }
@@ -104,7 +106,6 @@ class Auth {
   editProfile({ _id, username, userFrom, userBirthdate, about, profilePic }) {
     return this.auth
       .post(`/profile/edit/${_id}`, {
-        _id,
         username,
         userFrom,
         userBirthdate,
