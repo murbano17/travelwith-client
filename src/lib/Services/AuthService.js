@@ -142,6 +142,10 @@ class Auth {
       .then(({ data }) => data);
   }
 
+  getInviteList() {
+    return this.auth.get("/invite", {}).then(({ data }) => data);
+  }
+
   deleteInvite({ _id }) {
     return this.auth.post(`/invite/${_id}/delete`, {}).then(({ data }) => data);
   }

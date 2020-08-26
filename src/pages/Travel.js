@@ -16,6 +16,7 @@ class Travel extends Component {
   componentDidMount() {
     return this.props
       .getTravelsList()
+      .then((response) => response.filter((travel) => travel.isPublic))
       .then((resp) => this.setState({ travelList: resp, travelToShow: resp }))
       .catch((err) => console.log(err));
   }

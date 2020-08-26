@@ -29,6 +29,7 @@ const withAuth = (WrappedComponent) => {
             handleUploadCoverPic,
             editTravel,
             deleteInvite,
+            getInviteList,
           }) => {
             return (
               <WrappedComponent
@@ -52,6 +53,7 @@ const withAuth = (WrappedComponent) => {
                 handleUpload={handleUpload}
                 handleUploadCoverPic={handleUploadCoverPic}
                 deleteInvite={deleteInvite}
+                getInviteList={getInviteList}
                 {...this.props}
               />
             );
@@ -129,6 +131,15 @@ class AuthProvider extends React.Component {
       .then((res) => res)
       .catch((err) => console.log(err));
   };
+
+  getInviteList = () => {
+    return auth
+      .getInviteList()
+      .then((res) => res)
+      .catch((err) => console.log(err));
+  };
+
+  
 
   createTravel = (travel) => {
     const {
@@ -310,6 +321,7 @@ class AuthProvider extends React.Component {
       handleUploadCoverPic,
       editTravel,
       deleteInvite,
+      getInviteList,
     } = this;
 
     return isLoading ? (
@@ -338,6 +350,7 @@ class AuthProvider extends React.Component {
           handleUploadCoverPic,
           editTravel,
           deleteInvite,
+          getInviteList,
         }}
       >
         {this.props.children}

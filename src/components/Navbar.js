@@ -26,7 +26,7 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon icon-navbar"></span>
         </button>
         <Link to={"/"} className="navbar-brand ">
-          <img className="logo-navbar" src="../../images/logo.png" />
+          <img className="logo-navbar" src="../../images/logo.png" alt='logo'/>
         </Link>
         {isLoggedin ? (
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
