@@ -42,7 +42,8 @@ class Travel extends Component {
     return (
       <div className="container-travel">
         <div className="header">
-        <SearchBar  filterTravels={this.filterTravels} /></div>
+          <SearchBar filterTravels={this.filterTravels} />
+        </div>
         <div className="travelList-container">
           {this.state.travelToShow.map((eachTravel) => {
             return <TravelCard key={eachTravel._id} {...eachTravel} />;
