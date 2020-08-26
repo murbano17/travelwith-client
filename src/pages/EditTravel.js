@@ -90,7 +90,7 @@ class EditTravel extends Component {
 
   render() {
     return (
-      <div class="edit-travel-container">
+      <div className="edit-travel-container">
         <h1>Edit your Travel</h1>
         <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
           <div className="form-group">
