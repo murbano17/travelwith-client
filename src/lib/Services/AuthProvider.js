@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import React from "react";
 import auth from "./AuthService";
 const { Consumer, Provider } = React.createContext();
@@ -139,8 +139,6 @@ class AuthProvider extends React.Component {
       .catch((err) => console.log(err));
   };
 
-  
-
   createTravel = (travel) => {
     const {
       travelName,
@@ -168,24 +166,26 @@ class AuthProvider extends React.Component {
 
   editTravel = (travel) => {
     const {
-      _id,
       travelName,
       startDate,
       endDate,
       origin,
       destination,
+      isPublic,
       coverPic,
+      _id,
     } = travel;
 
     return auth
       .editTravel({
-        _id,
         travelName,
         startDate,
         endDate,
         origin,
         destination,
+        isPublic,
         coverPic,
+        _id,
       })
       .then((travel) => this.setState({ travel }))
       .catch((err) => console.log(err));
@@ -260,13 +260,13 @@ class AuthProvider extends React.Component {
   };
 
   deleteInvite = (invite) => {
-    const {_id} = invite;
+    const { _id } = invite;
 
     return auth
-    .deleteInvite({_id})
-    .then((resp) => console.log('Invite deleted', resp))
-    .catch((err) => console.log(err));
-  }
+      .deleteInvite({ _id })
+      .then((resp) => console.log("Invite deleted", resp))
+      .catch((err) => console.log(err));
+  };
 
   handleUpload(theFile) {
     return axios

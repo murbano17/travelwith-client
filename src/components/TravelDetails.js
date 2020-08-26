@@ -35,8 +35,6 @@ export class TravelDetails extends Component {
 
   render() {
     const travel = this.state.travelToShow;
-    console.log("USER", travel.travelMembers);
-
     return (
       <div className="travel-details-container">
         <div className="card card-details" style={{ width: "18rem" }}>
@@ -56,7 +54,7 @@ export class TravelDetails extends Component {
               {travel.startDate} - {travel.endDate}
             </p>
             <button
-              class="btn btn-primary"
+              className="btn btn-primary"
               data-toggle="modal"
               data-target="#modal-travelMembers"
             >
@@ -72,38 +70,38 @@ export class TravelDetails extends Component {
 
             {/* Modal */}
             {/* <div
-              class="modal fade"
+              className="modal fade"
               id="modal-travelMembers"
               tabindex="-1"
               role="dialog"
               aria-labelledby="exampleModalLongTitle"
               aria-hidden="true"
             >
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">
+              <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLongTitle">
                       Modal title
                     </h5>
                     <button
                       type="button"
-                      class="close"
+                      className="close"
                       data-dismiss="modal"
                       aria-label="Close"
                     >
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">...</div>
-                  <div class="modal-footer">
+                  <div className="modal-body">...</div>
+                  <div className="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                       data-dismiss="modal"
                     >
                       Close
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" className="btn btn-primary">
                       Save changes
                     </button>
                   </div>

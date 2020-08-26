@@ -73,21 +73,23 @@ class Auth {
   }
 
   editTravel({
-    _id,
     travelName,
     startDate,
     endDate,
     origin,
     destination,
+    isPublic,
     coverPic,
+    _id,
   }) {
     return this.auth
-      .post(`/travel/edit/${_id}`, {
+      .patch(`/travel/edit/${_id}`, {
         travelName,
         startDate,
         endDate,
         origin,
         destination,
+        isPublic,
         coverPic,
       })
       .then(({ data }) => data);
