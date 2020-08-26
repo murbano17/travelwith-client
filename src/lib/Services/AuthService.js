@@ -83,7 +83,7 @@ class Auth {
     isPublic,
   }) {
     return this.auth
-      .post(`/travel/edit/${_id}`, {
+      .patch(`/travel/edit/${_id}`, {
         travelName,
         startDate,
         endDate,

@@ -6,6 +6,7 @@ class EditTravel extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      _id: "",
       travelName: "",
       startDate: "",
       endDate: "",
@@ -18,10 +19,10 @@ class EditTravel extends Component {
   }
 
   componentDidMount() {
-    this.updateTravel();
+    this.getTravel();
   }
 
-  updateTravel() {
+  getTravel() {
     return this.props
       .getTravelsList()
       .then((resp) =>
@@ -37,7 +38,6 @@ class EditTravel extends Component {
           destination: res[0].destination,
           isPublic: res[0].isPublic,
           coverPic: res[0].coverPic,
-          travel: res[0],
         })
       )
 
@@ -67,7 +67,7 @@ class EditTravel extends Component {
       isPublic,
       coverPic,
     });
-    this.updateTravel();
+    this.getTravel();
     this.props.history.push("/");
   };
 
@@ -97,7 +97,6 @@ class EditTravel extends Component {
   };
 
   render() {
-    console.log("holiiiiii", this.state);
     return (
       <div className="edit-travel-container">
         <h1>Edit your Travel</h1>
@@ -110,7 +109,7 @@ class EditTravel extends Component {
               className="form-control"
               type="text"
               name="travelName"
-              value={this.travelName}
+              value={this.state.travelName}
               onChange={this.handleChange}
               placeholder={this.state.travelName}
             />
@@ -123,7 +122,7 @@ class EditTravel extends Component {
               className="form-control"
               type="Date"
               name="startDate"
-              value={this.startDate}
+              value={this.state.startDate}
               onChange={this.handleChange}
               placeholder={this.state.startDate}
             />
@@ -136,7 +135,7 @@ class EditTravel extends Component {
               className="form-control"
               type="Date"
               name="endDate"
-              value={this.endDate}
+              value={this.state.endDate}
               onChange={this.handleChange}
               placeholder={this.state.endDate}
             />
@@ -160,7 +159,7 @@ class EditTravel extends Component {
               className="form-control"
               type="text"
               name="origin"
-              value={this.origin}
+              value={this.state.origin}
               onChange={this.handleChange}
               placeholder={this.state.origin}
             />
@@ -173,7 +172,7 @@ class EditTravel extends Component {
               className="form-control"
               type="text"
               name="destination"
-              value={this.destination}
+              value={this.state.destination}
               onChange={this.handleChange}
               placeholder={this.state.destination}
             />
@@ -187,7 +186,7 @@ class EditTravel extends Component {
               className="form-control"
               type="checkbox"
               name="isPublic"
-              checked={this.isPublic}
+              checked={this.state.isPublic}
               onChange={this.handleChange}
             />
           </div>
