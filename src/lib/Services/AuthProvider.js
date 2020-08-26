@@ -28,6 +28,7 @@ const withAuth = (WrappedComponent) => {
             handleUpload,
             handleUploadCoverPic,
             editTravel,
+            deleteInvite,
           }) => {
             return (
               <WrappedComponent
@@ -50,6 +51,7 @@ const withAuth = (WrappedComponent) => {
                 editTravel={editTravel}
                 handleUpload={handleUpload}
                 handleUploadCoverPic={handleUploadCoverPic}
+                deleteInvite={deleteInvite}
                 {...this.props}
               />
             );
@@ -246,6 +248,15 @@ class AuthProvider extends React.Component {
       .catch((err) => console.log(err));
   };
 
+  deleteInvite = (invite) => {
+    const {_id} = invite;
+
+    return auth
+    .deleteInvite({_id})
+    .then((resp) => console.log('Invite deleted', resp))
+    .catch((err) => console.log(err));
+  }
+
   handleUpload(theFile) {
     return axios
       .create({
@@ -298,6 +309,7 @@ class AuthProvider extends React.Component {
       handleUpload,
       handleUploadCoverPic,
       editTravel,
+      deleteInvite,
     } = this;
 
     return isLoading ? (
@@ -325,6 +337,7 @@ class AuthProvider extends React.Component {
           handleUpload,
           handleUploadCoverPic,
           editTravel,
+          deleteInvite,
         }}
       >
         {this.props.children}
