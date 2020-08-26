@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const TravelCard = (props) => {
   //   const eachTravel = props.eachTravel
   return (
+    <Link to={`/travel/${props._id}`} >
     <div className="card" style={{ width: "18rem" }}>
       <div className="img-card">
         <img src={props.coverPic} className="card-img-top" alt="travelpic" />
@@ -17,6 +18,7 @@ const TravelCard = (props) => {
         </Link>
       </div>
     </div>
+    </Link>
   );
 };
 

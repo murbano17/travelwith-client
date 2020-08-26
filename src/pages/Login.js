@@ -27,39 +27,43 @@ class Login extends Component {
   render() {
     return (
       <div className="login-container">
-        <h1>Login</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <div className="form-group">
-            <label>
-              <b>Email</b>
-            </label>
-            <input
-              className="form-control"
-              name="email"
-              type="text"
-              value={this.email}
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="form-group">
-            <label>
-              <b>Password</b>
-            </label>
-            <input
-              className="form-control"
-              name="password"
-              type="password"
-              value={this.password}
-              onChange={this.handleChange}
-            />
-          </div>
-          <input type="submit" value="Login" className="btn btn-secondary" />
-        </form>
-        <p className="account">
-          Don't have an account?  
-          <Link className="link" to={"/signup"}> Create one
-          </Link>
-        </p>
+        <div className="container-form">
+          <h1>Login</h1>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-group">
+              <label>
+                <b>Email</b>
+              </label>
+              <input
+                className="form-control"
+                name="email"
+                type="text"
+                value={this.email}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>
+                <b>Password</b>
+              </label>
+              <input
+                className="form-control"
+                name="password"
+                type="password"
+                value={this.password}
+                onChange={this.handleChange}
+              />
+            </div>
+            <input type="submit" value="Login" className="btn btn-secondary" />
+          </form>
+          <p className="account">
+            Don't have an account?
+            <Link className="link" to={"/signup"}>
+              {" "}
+              Create one
+            </Link>
+          </p>
+        </div>
       </div>
     );
   }
