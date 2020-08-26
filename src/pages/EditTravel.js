@@ -97,7 +97,6 @@ class EditTravel extends Component {
   };
 
   render() {
-    console.log("holiiiiii", this.state);
     return (
       <div className="edit-travel-container">
         <h1>Edit your Travel</h1>
