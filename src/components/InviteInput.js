@@ -52,22 +52,26 @@ class InviteInput extends Component {
 
   render() {
     return (
-      <div>
+      <div className="invite-input">
         <h2>Invite a friend</h2>
         <form onSubmit={this.handleFormSubmit}>
           <input
             type="text"
+            className="input-email"
+            className="form-control"
             name="emailInvite"
             value={this.state.emailInvite}
             onChange={this.handleChange}
+            placeholder="email@email.com"
           />
           <input
+            className="btn btn-secondary send-invitation-btn"
             type="submit"
             value="Send Invites"
             onClick={(e) => this.showMessage(e)}
           />
         </form>
-        <div>
+        <div className="invitation-message">
           {this.state.isMessageShown ? (
             <p>Invitation sent successfully</p>
           ) : null}

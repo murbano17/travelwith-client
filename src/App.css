@@ -203,8 +203,18 @@ a:hover {
   font-weight: 600;
   font-size: 1.3rem;
 }
-
+.btn-members {
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+  width: 100%;
+  background-color: white;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
 .members img {
+  margin: 5px;
   margin-top: 5px;
   height: 65px;
   width: 65px;
@@ -216,6 +226,13 @@ a:hover {
   display: flex;
   align-items: space-around;
   justify-content: space-around;
+}
+
+.join-travel {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /*Travel*/
 
@@ -282,7 +299,24 @@ a:hover {
   background-color: white;
 }
 
+/*Travel invite*/
 
+.invite-input h2 {
+  color: black;
+  font-size: 1.2rem;
+}
+
+.invitation-message {
+  color: green;
+}
+
+.send-invitation-btn {
+  margin-top: 10px;
+}
+
+.card {
+  width: 18rem;
+}
 @media (min-width: 858px) {
   /*Navbar*/
   .ulnavbar {
@@ -324,10 +358,97 @@ a:hover {
     justify-content: center;
   }
 
-  .edit-profile-container{
+  .edit-profile-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
- 
+  /*travel-details*/
+  .card {
+    width: 70%;
+    padding-bottom:20px;
+  }
+
+  .img-container {
+    height: 150px;
+  }
+
+  .card-details-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+  }
+
+  .card-details-info h5 {
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .destination {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .info-travel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .basic-info {
+    width: 50%;
+  }
+
+  .profiles-info {
+    width: 50%;
+    height: 100%;
+  }
+
+  .btn-members {
+    height: 100%;
+    padding: 20px;
+  }
+
+  .members img {
+    margin: 10px;
+    height: 85px;
+    width: 85px;
+  }
+  .details-travel-icons {
+    width: 45%;
+  }
+  .details-travel-icons i {
+    font-size: 2rem;
+  }
+
+  .buttons-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .invite-input {
+    display: flex;
+    flex-direction: column;
+  }
+  .buttons-details {
+    display: flex;
+    flex-direction: row;
+  }
+  .details-travel-icons {
+    width: 100%;
+  }
+  .icons-edit {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .inviteinput {
+    width: 45%;
+  }
 }
