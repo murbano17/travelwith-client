@@ -44,7 +44,6 @@ class NotificationPanel extends Component {
   }
 
   render() {
-    console.log("list to show", this.state.invitationToShow);
     return (
       <div>
         <ul>

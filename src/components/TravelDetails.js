@@ -37,8 +37,6 @@ export class TravelDetails extends Component {
 
   render() {
     const travel = this.state.travelToShow;
-    console.log("USER", travel.travelMembers);
-
     return (
       <div className="travel-details-container">
         <div className="card card-details" style={{ width: "18rem" }}>

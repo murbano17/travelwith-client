@@ -166,26 +166,26 @@ class AuthProvider extends React.Component {
 
   editTravel = (travel) => {
     const {
-      _id,
       travelName,
       startDate,
       endDate,
       origin,
       destination,
-      coverPic,
       isPublic,
+      coverPic,
+      _id,
     } = travel;
 
     auth
       .editTravel({
-        _id,
         travelName,
         startDate,
         endDate,
         origin,
         destination,
-        coverPic,
         isPublic,
+        coverPic,
+        _id,
       })
       .then((travel) => this.setState({ travel }))
       .catch((err) => console.log(err));

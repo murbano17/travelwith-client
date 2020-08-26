@@ -73,14 +73,14 @@ class Auth {
   }
 
   editTravel({
-    _id,
     travelName,
     startDate,
     endDate,
     origin,
     destination,
-    coverPic,
     isPublic,
+    coverPic,
+    _id,
   }) {
     return this.auth
       .patch(`/travel/edit/${_id}`, {
@@ -89,8 +89,8 @@ class Auth {
         endDate,
         origin,
         destination,
-        coverPic,
         isPublic,
+        coverPic,
       })
       .then(({ data }) => data);
   }

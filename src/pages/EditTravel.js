@@ -15,14 +15,15 @@ class EditTravel extends Component {
       isPublic: false,
       coverPic: "",
       travelId: props.match.params.id,
+      _id: ''
     };
   }
 
   componentDidMount() {
-    this.getTravel();
+    this.getTravel()
   }
 
-  getTravel() {
+  getTravel = () => {
     return this.props
       .getTravelsList()
       .then((resp) =>
@@ -30,7 +31,6 @@ class EditTravel extends Component {
       )
       .then((res) =>
         this.setState({
-          _id: res[0]._id,
           travelName: res[0].travelName,
           startDate: res[0].startDate,
           endDate: res[0].endDate,
@@ -38,11 +38,12 @@ class EditTravel extends Component {
           destination: res[0].destination,
           isPublic: res[0].isPublic,
           coverPic: res[0].coverPic,
+          _id: res[0]._id
         })
       )
 
       .catch((err) => console.log(err));
-  }
+  };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -67,7 +68,7 @@ class EditTravel extends Component {
       isPublic,
       coverPic,
     });
-    this.getTravel();
+    this.getTravel()
     this.props.history.push("/");
   };
 
