@@ -5,7 +5,6 @@ class Auth {
     this.auth = axios.create({
       baseURL: process.env.REACT_APP_API_URI,
       withCredentials: true,
-      
     });
   }
   signup({
@@ -95,15 +94,11 @@ class Auth {
   }
 
   deleteTravel(_id) {
-    return this.auth
-      .post(`/travel/delete/${_id}`, {})
-      .then(({ data }) => data);
+    return this.auth.post(`/travel/delete/${_id}`, {}).then(({ data }) => data);
   }
 
   getProfile(_id) {
-    return this.auth
-      .get(`/profile/${_id}`, {})
-      .then(({ data }) => data);
+    return this.auth.get(`/profile/${_id}`, {}).then(({ data }) => data);
   }
 
   editProfile({ _id, username, userFrom, userBirthdate, about, profilePic }) {
@@ -127,14 +122,18 @@ class Auth {
 
   editTask({ _id, taskName, taskDeadline, assignTo, taskNote, doneTask }) {
     return this.auth
-      .post(`/task/edit/${_id}`, { taskName, taskDeadline, assignTo, taskNote, doneTask })
+      .post(`/task/edit/${_id}`, {
+        taskName,
+        taskDeadline,
+        assignTo,
+        taskNote,
+        doneTask,
+      })
       .then(({ data }) => data);
   }
 
   deleteTask({ _id }) {
-    return this.auth
-      .post(`/task/delete/${_id}`, {})
-      .then(({ data }) => data);
+    return this.auth.post(`/task/delete/${_id}`, {}).then(({ data }) => data);
   }
 
   createInvitation({ _id, guestEmail }) {
@@ -143,10 +142,12 @@ class Auth {
       .then(({ data }) => data);
   }
 
+  deleteInvite({ _id }) {
+    return this.auth.post(`/invite/${_id}/delete`, {}).then(({ data }) => data);
+  }
+
   joinTravel({ _id }) {
-    return this.auth
-      .post(`/travel/${_id}/join`, {})
-      .then(({ data }) => data);
+    return this.auth.post(`/travel/${_id}/join`, {}).then(({ data }) => data);
   }
 }
 const axiosRequestFunctions = new Auth();
