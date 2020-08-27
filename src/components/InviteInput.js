@@ -58,8 +58,7 @@ class InviteInput extends Component {
         <form onSubmit={this.handleFormSubmit}>
           <input
             type="text"
-            className="input-email"
-            className="form-control"
+            className="input-email form-control"
             name="emailInvite"
             value={this.state.emailInvite}
             onChange={this.handleChange}
