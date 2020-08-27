@@ -318,7 +318,7 @@ a:hover {
   margin-top: 10px;
 }
 
-.card {
+.card-details-travel {
   width: 18rem;
 }
 
@@ -459,7 +459,7 @@ a:hover {
   }
 
   /*travel-details*/
-  .card {
+  .card-details-travel {
     width: 70%;
     padding-bottom: 20px;
   }

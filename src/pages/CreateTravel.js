@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
+import { type } from "jquery";
 // import { withServices } from "../lib/Services/ServicesProvider";
 
 class CreateTravel extends Component {
