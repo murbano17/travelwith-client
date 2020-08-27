@@ -7,7 +7,7 @@ function Carousel() {
       className="carousel slide carousel-multi-item v-2"
       data-ride="carousel"
     >
-      <div className="controls-top">
+      <div className="controls-top d-none">
         <a
           className="btn-floating"
           href="#carousel-example-multi"
@@ -24,7 +24,7 @@ function Carousel() {
         </a>
       </div>
 
-      <ol className="carousel-indicators">
+      <ol className="carousel-indicators d-none">
         <li
           data-target="#carousel-example-multi"
           data-slide-to="0"
@@ -45,54 +45,51 @@ function Carousel() {
 
       <div className="carousel-inner v-2" role="listbox">
         <div className="carousel-item active">
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-12">
             <div className="card mb-2">
               <img
                 className="card-img-top"
                 src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg"
-                alt="Card image cap"
+                alt="logo"
               />
               <div className="card-body">
-                <h4 className="card-title font-weight-bold">Card title</h4>
+                <h4 className="card-title font-weight-bold">TravelWith</h4>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Welcome to <b>TravelWith</b>, your best friend for organize every travel with (new) friends.
                 </p>
               </div>
             </div>
           </div>
         </div>
         <div className="carousel-item">
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-12">
             <div className="card mb-2">
               <img
                 className="card-img-top"
                 src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
-                alt="Card image cap"
+                alt="card number 2"
               />
               <div className="card-body">
-                <h4 className="card-title font-weight-bold">Card title</h4>
+                <h4 className="card-title font-weight-bold">Create your own travel</h4>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Decide where do you wanna go. Add some details. Invite some Friends.
                 </p>
               </div>
             </div>
           </div>
         </div>
         <div className="carousel-item">
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-12">
             <div className="card mb-2">
               <img
                 className="card-img-top"
                 src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg"
-                alt="Card image cap"
+                alt="Card number 3"
               />
               <div className="card-body">
-                <h4 className="card-title font-weight-bold">Card title</h4>
+                <h4 className="card-title font-weight-bold">Discover new people (and places)</h4>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  Search for open plans and join to a new adventure.
                 </p>
               </div>
             </div>
