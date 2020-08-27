@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
 
 class Navbar extends Component {
-  // constructor(props)  {
-  //     super(props);
-  //     this.state = {
+  constructor(props)  {
+      super(props);
+      this.state = {
+        isNavbarCollapse: true,
+      }
+  }
 
-  //     }
-  // }
+  cloneNavbar = (e) => {
+    let updateNavBarMode = !this.state.isNavbarCollapse
+    this.setState({isNavbarCollapse: updateNavBarMode})
+  }
 
   render() {
     const { user, logout, isLoggedin } = this.props;
+    
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-custom ">
         <button
@@ -29,10 +35,10 @@ class Navbar extends Component {
           <img className="logo-navbar" src="../../images/logo.png" alt='logo'/>
         </Link>
         {isLoggedin ? (
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <div className="collapse navbar-collapse" data-toggle="collapse" data-target="#navbarTogglerDemo03" id="navbarTogglerDemo03">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0 ulnavbar">
               <li className="nav-item">
-                <Link className="nav-link" to={"/travel"}>
+                <Link className="nav-link" to={"/travel"} >
                   Find a travel
                 </Link>
               </li>
@@ -55,7 +61,7 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item image-navbar">
-                <img src={user.profilePic} />
+                <img src={user.profilePic} alt='profile pic'/>
               </li>
               <li className="nav-item image-navbar">
                 <p onClick={logout}>
