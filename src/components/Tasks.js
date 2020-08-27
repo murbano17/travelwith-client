@@ -57,7 +57,6 @@ class Tasks extends Component {
       .catch((err) => console.log(err));
 
     this.setState({ taskName: "" });
-
   };
 
   handleDoneTask = (e, task) => {
@@ -83,42 +82,51 @@ class Tasks extends Component {
     let classDone;
     return (
       <div className="toDoList-container">
-        <form onSubmit={this.handleFormSubmit}>
-          <input
-            type="text"
-            name="taskName"
-            value={this.state.taskName}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Add task" />
-        </form>
-        <ul>
-          {this.state.tasksArr &&
-            this.state.tasksArr.map(
-              (eachTask) => { return (
-                (eachTask.doneTask
-                  ? (classDone = "done")
-                  : (classDone = "undone")),
-                
-                  <li key={eachTask._id}>
-                    <div>
-                      <p
-                        className={classDone}
-                        onClick={(e) => this.handleDoneTask(e, eachTask)}
-                      >
-                        {eachTask.taskName}
-                      </p>
-                      <button
-                        onClick={(e) => this.handleDeleteTask(e, eachTask)}
-                      >
-                        X
-                      </button>
-                    </div>
-                  </li>
-                
-              )}
-            )}
-        </ul>
+        <div className="todolist">
+          <h2>What to do?</h2>
+          <form onSubmit={this.handleFormSubmit}>
+            <input
+              className="addTask"
+              type="text"
+              name="taskName"
+              value={this.state.taskName}
+              onChange={this.handleChange}
+              placeholder="Add a task"
+            />
+            <button type="submit" className="add">
+              {" "}
+              <i class="fas fa-plus"></i>
+            </button>
+          </form>
+          <ul className="list">
+            {this.state.tasksArr &&
+              this.state.tasksArr.map((eachTask) => {
+                return (
+                  eachTask.doneTask
+                    ? (classDone = "done")
+                    : (classDone = "undone"),
+                  (
+                    <li key={eachTask._id}>
+                      <div className="eachTask">
+                        <p
+                          className={classDone}
+                          onClick={(e) => this.handleDoneTask(e, eachTask)}
+                        >
+                          {eachTask.taskName}
+                        </p>
+                        <button
+                          className="deletetask"
+                          onClick={(e) => this.handleDeleteTask(e, eachTask)}
+                        >
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </li>
+                  )
+                );
+              })}
+          </ul>
+        </div>
       </div>
     );
   }

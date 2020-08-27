@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
 import NotificationPanel from "../components/NotificationPanel";
 
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +11,7 @@ class Dashboard extends Component {
       travelsOwned: [],
       travelsJoined: [],
       userId: props.match.params.id,
-      userToShow: ''
+      userToShow: "",
     };
   }
 
@@ -24,7 +23,7 @@ class Dashboard extends Component {
         this.setState({
           travelsOwned: resp.ownTravels,
           travelsJoined: resp.joinTravels,
-          userToShow: resp
+          userToShow: resp,
         })
       )
       .catch((err) => console.log(err));
@@ -36,9 +35,13 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-container">
-      <h2>Pending invitations</h2>
-      <NotificationPanel user={this.state.userToShow} />
-      <h2>Organizer of: </h2>
+          <div>
+            <h2>Invitations:</h2>
+            <NotificationPanel user={this.state.userToShow} />
+          </div>
+        
+
+        <h2>Organizer of: </h2>
         <div className="ownTravels-container">
           {this.state.travelsOwned &&
             this.state.travelsOwned.map((eachTravel) => {
@@ -56,18 +59,20 @@ class Dashboard extends Component {
                     />
                     <div className="card-body">
                       <h5 className="card-title">{eachTravel.travelName}</h5>
-                      <p className="card-text">Origin: {eachTravel.origin}</p>
-                      <p className="card-text">
-                        Destination: {eachTravel.destination}
+                      <p className="card-text destination">
+                        {eachTravel.origin}- {eachTravel.destination}
                       </p>
-                      See travel details
+                      <p className="card-text">
+                        {eachTravel.startDate}- {eachTravel.endDate}
+                      </p>
                     </div>
                   </div>
                 </Link>
               );
             })}
         </div>
-        <h2>Member of</h2>
+
+        <h2>Member of:</h2>
         <div className="joinedTravels-container">
           {this.state.travelsJoined &&
             this.state.travelsJoined.map((eachTravel) => {
@@ -85,11 +90,12 @@ class Dashboard extends Component {
                     />
                     <div className="card-body">
                       <h5 className="card-title">{eachTravel.travelName}</h5>
-                      <p className="card-text">Origin: {eachTravel.origin}</p>
-                      <p className="card-text">
-                        Destination: {eachTravel.destination}
+                      <p className="card-text destination">
+                        {eachTravel.origin}- {eachTravel.destination}
                       </p>
-                      See travel details
+                      <p className="card-text">
+                        {eachTravel.startDate}- {eachTravel.endDate}
+                      </p>
                     </div>
                   </div>
                 </Link>

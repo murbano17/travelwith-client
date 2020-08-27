@@ -239,7 +239,7 @@ a:hover {
 .travelList-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: initial;
   justify-content: space-around;
 }
 .img-card {
@@ -300,7 +300,9 @@ a:hover {
 }
 
 /*Travel invite*/
-
+.invite-input {
+  margin: 20px;
+}
 .invite-input h2 {
   color: black;
   font-size: 1.2rem;
@@ -317,6 +319,90 @@ a:hover {
 .card {
   width: 18rem;
 }
+
+/*Dashboard*/
+.ownTravels-container,
+.joinedTravels-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: initial;
+  justify-content: space-around;
+}
+
+.dashboard-container {
+  margin: 20px;
+}
+
+.dashboard-container h2 {
+  color: #ff6525;
+}
+
+/*toDoList*/
+.toDoList-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+}
+.toDoList-container h2 {
+  color: #ff6525;
+}
+.todolist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.add {
+  color: #ff6525;
+  background-color: white;
+  border: none;
+  font-size: 1.2rem;
+}
+.add:focus {
+  color: #ff6525;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  margin: 15px;
+  padding-left: 30px;
+  font-size: 1.3rem;
+}
+
+.eachTask {
+  display: flex;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+.addTask {
+  width: 250px;
+  height: 50px;
+}
+
+.addTask:focus {
+  color: #ff6525;
+}
+.eachTask p {
+  width: 180px;
+  margin: 0;
+}
+
+.deletetask {
+  color: #ff6525;
+  background-color: white;
+  border: none;
+  font-size: 1.2rem;
+}
+
 @media (min-width: 858px) {
   /*Navbar*/
   .ulnavbar {
@@ -363,10 +449,17 @@ a:hover {
     align-items: center;
     justify-content: center;
   }
+
+  .edit-travel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   /*travel-details*/
   .card {
     width: 70%;
-    padding-bottom:20px;
+    padding-bottom: 20px;
   }
 
   .img-container {
@@ -377,7 +470,6 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
   }
 
   .card-details-info h5 {
@@ -449,6 +541,11 @@ a:hover {
   }
 
   .inviteinput {
+    margin: 0;
     width: 45%;
+  }
+
+  .todolist {
+    width: 600px;
   }
 }

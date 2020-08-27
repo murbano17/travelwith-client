@@ -52,6 +52,7 @@ class InviteInput extends Component {
 
   render() {
     return (
+      <div>
       <div className="invite-input">
         <h2>Invite a friend</h2>
         <form onSubmit={this.handleFormSubmit}>
@@ -76,6 +77,7 @@ class InviteInput extends Component {
             <p>Invitation sent successfully</p>
           ) : null}
         </div>
+      </div>
       </div>
     );
   }

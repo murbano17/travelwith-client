@@ -11,8 +11,8 @@ const TravelCard = (props) => {
       </div>
       <div className="card-body">
         <h5 className="card-title">{props.travelName}</h5>
-        <p className="card-text">Origin: {props.origin}</p>
-        <p className="card-text">Destination: {props.destination}</p>
+        <p className="card-text destination">{props.origin} - {props.destination}</p>
+        <p className="card-text">{props.startDate} - {props.endDate}</p>
         {/* <Link className="btn btn-primary" to={`/travel/${props._id}`}>
           See travel details
         </Link> */}
