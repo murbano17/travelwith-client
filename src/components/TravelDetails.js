@@ -16,7 +16,6 @@ export class TravelDetails extends Component {
     this.getTravelDetails();
   }
 
-  openModal;
 
   getTravelDetails = () => {
     return this.props
