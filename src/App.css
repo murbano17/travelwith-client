@@ -184,9 +184,19 @@ a:hover {
 /*Travel details*/
 .travel-details-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
+}
+.arrow-back {
+  align-self: initial;
+
+  width: 75%;
+}
+.arrow-back i {
+  font-size: 1.5rem;
+  color: #ff6525;
 }
 
 .card-details {
@@ -231,10 +241,10 @@ a:hover {
 }
 
 .join-travel {
-  margin: 5px;
+  margin: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 /*Travel*/
 
@@ -339,6 +349,14 @@ a:hover {
   color: #ff6525;
 }
 
+.delete-invitation {
+  background: red;
+  margin-right: 10px;
+}
+.accept-invitation {
+  background: green;
+  margin-right: 10px;
+}
 /*toDoList*/
 .toDoList-container {
   display: flex;
@@ -402,9 +420,14 @@ a:hover {
   color: #ff6525;
   background-color: white;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
-
+.btn-join {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
 @media (min-width: 858px) {
   /*Navbar*/
   .ulnavbar {
@@ -459,6 +482,10 @@ a:hover {
   }
 
   /*travel-details*/
+
+  .img-carousel {
+    max-height: 400px;
+  }
   .card-details-travel {
     width: 70%;
     padding-bottom: 20px;

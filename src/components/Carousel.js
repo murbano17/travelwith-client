@@ -46,16 +46,17 @@ function Carousel() {
       <div className="carousel-inner v-2" role="listbox">
         <div className="carousel-item active">
           <div className="col-12 col-md-12">
-            <div className="card mb-2">
+            <div className="card card-carousel mb-2">
               <img
                 className="card-img-top"
-                src="https://mdbootstrap.com/img/Photos/Others/img (36).jpg"
+                src="./../../images/logo-cover.png"
                 alt="logo"
               />
               <div className="card-body">
                 <h4 className="card-title font-weight-bold">TravelWith</h4>
                 <p className="card-text">
-                  Welcome to <b>TravelWith</b>, your best friend for organize every travel with (new) friends.
+                  Welcome to <b>TravelWith</b>, your best friend for organize
+                  every travel with (new) friends.
                 </p>
               </div>
             </div>
@@ -63,16 +64,19 @@ function Carousel() {
         </div>
         <div className="carousel-item">
           <div className="col-12 col-md-12">
-            <div className="card mb-2">
+            <div className="card mb-2 card-carousel" >
               <img
-                className="card-img-top"
-                src="https://mdbootstrap.com/img/Photos/Others/img (34).jpg"
+                className="card-img-top img-carousel "
+                src="./../../images/organize-travel.jpg"
                 alt="card number 2"
               />
               <div className="card-body">
-                <h4 className="card-title font-weight-bold">Create your own travel</h4>
+                <h4 className="card-title font-weight-bold">
+                  Create your own travel
+                </h4>
                 <p className="card-text">
-                  Decide where do you wanna go. Add some details. Invite some Friends.
+                  Decide where do you wanna go. Add some details. Invite some
+                  Friends.
                 </p>
               </div>
             </div>
@@ -80,14 +84,16 @@ function Carousel() {
         </div>
         <div className="carousel-item">
           <div className="col-12 col-md-12">
-            <div className="card mb-2">
+            <div className="card mb-2 card-carousel">
               <img
                 className="card-img-top"
-                src="https://mdbootstrap.com/img/Photos/Others/img (38).jpg"
+                src="./../../images/furgo.jpg"
                 alt="Card number 3"
               />
               <div className="card-body">
-                <h4 className="card-title font-weight-bold">Discover new people (and places)</h4>
+                <h4 className="card-title font-weight-bold">
+                  Discover new people (and places)
+                </h4>
                 <p className="card-text">
                   Search for open plans and join to a new adventure.
                 </p>

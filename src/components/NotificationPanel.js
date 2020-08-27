@@ -27,21 +27,19 @@ class NotificationPanel extends Component {
   };
 
   handleAccept = (e, travel, invite) => {
-    return (
-        this.props.joinTravel(travel)
-        .then(() => this.props.deleteInvite(invite))
-        .then(() => this.getInvites())
-        .catch(err => console.log('Error ', err))
-    )
-  }
+    return this.props
+      .joinTravel(travel)
+      .then(() => this.props.deleteInvite(invite))
+      .then(() => this.getInvites())
+      .catch((err) => console.log("Error ", err));
+  };
 
   handleDecline = (e, invite) => {
-      return (
-          this.props.deleteInvite(invite)
-          .then(() => this.getInvites())
-          .catch(err => console.log('error', err))
-      )
-  }
+    return this.props
+      .deleteInvite(invite)
+      .then(() => this.getInvites())
+      .catch((err) => console.log("error", err));
+  };
 
   render() {
     return (
@@ -71,8 +69,24 @@ class NotificationPanel extends Component {
                         Destination: {eachInvitation.inviteTo.destination}
                       </p>
                       <div>
-                    <button onClick={(e) => this.handleAccept(e, eachInvitation.inviteTo, eachInvitation)}>Accept</button>
-                    <button onClick={(e) => this.handleDecline(e, eachInvitation)}>Decline</button>
+                        <button
+                          className="btn btn-secondary accept-invitation"
+                          onClick={(e) =>
+                            this.handleAccept(
+                              e,
+                              eachInvitation.inviteTo,
+                              eachInvitation
+                            )
+                          }
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="btn btn-secondary delete-invitation"
+                          onClick={(e) => this.handleDecline(e, eachInvitation)}
+                        >
+                          Decline
+                        </button>
                       </div>
                     </div>
                   </div>

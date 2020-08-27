@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
+import { Link } from "react-router-dom";
 // import { withServices } from "../lib/Services/ServicesProvider";
 
 class EditTravel extends Component {
@@ -100,6 +101,11 @@ class EditTravel extends Component {
   render() {
     return (
       <div className="edit-travel-container">
+      <div className='arrow-back'>
+          <Link to={`/travel/${this.state.travelId}`}>
+            <i class="fas fa-arrow-left"></i>
+          </Link>
+        </div>
         <div className="container-form">
           <h1>Edit your Travel</h1>
           <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">

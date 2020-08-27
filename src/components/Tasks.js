@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import { withServices } from "../lib/Services/ServicesProvider";
 import { withAuth } from "../lib/Services/AuthProvider";
+import { Link } from "react-router-dom";
 
 class Tasks extends Component {
   constructor(props) {
@@ -82,6 +83,11 @@ class Tasks extends Component {
     let classDone;
     return (
       <div className="toDoList-container">
+        <div className="arrow-back">
+          <Link to={`/travel/${this.state.travelId}`}>
+            <i class="fas fa-arrow-left"></i>
+          </Link>
+        </div>
         <div className="todolist">
           <h2>What to do?</h2>
           <form onSubmit={this.handleFormSubmit}>

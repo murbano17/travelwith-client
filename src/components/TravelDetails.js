@@ -37,6 +37,11 @@ export class TravelDetails extends Component {
     const travel = this.state.travelToShow;
     return (
       <div className="travel-details-container">
+        <div className='arrow-back'>
+          <Link to={`/travel`}>
+            <i class="fas fa-arrow-left"></i>
+          </Link>
+        </div>
         <div className="card card-details card-details-travel">
           <div className="img-container">
             <img
@@ -100,16 +105,19 @@ export class TravelDetails extends Component {
                 </div>
               </div>
             ) : null}
-            {this.props.user.joinTravels.includes(travel._id) ? null : (
-              <div className="join-travel">
-                <button
-                  className="btn btn-secondary"
-                  onClick={(e) => this.handleAccept(e, travel)}
-                >
-                  Join Travel
-                </button>
-              </div>
-            )}
+            <div>
+              {this.props.user.joinTravels.includes(travel._id) ||
+              this.props.user.ownTravels.includes(travel._id) ? null : (
+                <div className="join-travel">
+                  <button
+                    className="btn btn-secondary btn-join"
+                    onClick={(e) => this.handleAccept(e, travel)}
+                  >
+                    <i class="fas fa-plus"></i>{" "}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
