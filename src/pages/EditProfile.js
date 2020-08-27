@@ -12,6 +12,10 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
+    this.getProfile()
+  }
+
+  getProfile = () => {
     return this.props
       .getProfile(this.state.userId)
       .then((user) =>
@@ -24,8 +28,7 @@ class EditProfile extends Component {
           profilePic: user.profilePic,
         })
       )
-      .catch((err) => console.log(err));
-  }
+      .catch((err) => console.log(err));}
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -46,7 +49,7 @@ class EditProfile extends Component {
       _id,
       userBirthdate,
     });
-
+    this.getProfile();
     this.props.history.push(`/profile/${this.state.userId}`);
   };
 
