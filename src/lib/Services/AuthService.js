@@ -105,7 +105,7 @@ class Auth {
 
   editProfile({ _id, username, userFrom, userBirthdate, about, profilePic }) {
     return this.auth
-      .post(`/profile/edit/${_id}`, {
+      .patch(`/profile/edit/${_id}`, {
         username,
         userFrom,
         userBirthdate,
