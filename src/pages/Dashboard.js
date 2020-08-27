@@ -60,10 +60,10 @@ class Dashboard extends Component {
                     <div className="card-body">
                       <h5 className="card-title">{eachTravel.travelName}</h5>
                       <p className="card-text destination">
-                        {eachTravel.origin}- {eachTravel.destination}
+                        {eachTravel.origin} - {eachTravel.destination}
                       </p>
                       <p className="card-text">
-                        {eachTravel.startDate}- {eachTravel.endDate}
+                        {eachTravel.startDate} - {eachTravel.endDate}
                       </p>
                     </div>
                   </div>
@@ -91,10 +91,10 @@ class Dashboard extends Component {
                     <div className="card-body">
                       <h5 className="card-title">{eachTravel.travelName}</h5>
                       <p className="card-text destination">
-                        {eachTravel.origin}- {eachTravel.destination}
+                        {eachTravel.origin} - {eachTravel.destination}
                       </p>
                       <p className="card-text">
-                        {eachTravel.startDate}- {eachTravel.endDate}
+                        {eachTravel.startDate} - {eachTravel.endDate}
                       </p>
                     </div>
                   </div>
