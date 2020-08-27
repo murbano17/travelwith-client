@@ -164,6 +164,8 @@ a:hover {
 /*Edit profile*/
 
 .edit-profile-container {
+  display: flex;
+  flex-direction: column;
   margin: 20px;
 }
 
@@ -175,6 +177,10 @@ a:hover {
 /*Edit travel*/
 .edit-travel-container {
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .edit-travel-container h1 {
   color: #ff6525;
@@ -191,8 +197,7 @@ a:hover {
 }
 .arrow-back {
   align-self: initial;
-
-  width: 75%;
+  width: 50%;
 }
 .arrow-back i {
   font-size: 1.5rem;
@@ -471,8 +476,10 @@ a:hover {
 
   .edit-profile-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+
   }
 
   .edit-travel-container {
@@ -577,4 +584,5 @@ a:hover {
   .todolist {
     width: 600px;
   }
+
 }
