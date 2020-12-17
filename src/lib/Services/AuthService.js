@@ -3,7 +3,7 @@ import axios from "axios";
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: process.env.REACT_APP_API_URI + "/api",
+      baseURL: process.env.REACT_APP_API_URI,
       withCredentials: true,
     });
   }
@@ -17,7 +17,7 @@ class Auth {
     about,
   }) {
     return this.auth
-      .post("/signup", {
+      .post("/api/signup", {
         username,
         email,
         password,
@@ -31,7 +31,7 @@ class Auth {
 
   login({ email, password }) {
     return this.auth
-      .post("/login", {
+      .post("/api/login", {
         email,
         password,
       })
@@ -39,18 +39,18 @@ class Auth {
   }
 
   logout() {
-    return this.auth.post("/logout", {}).then(({ data }) => data);
+    return this.auth.post("/api/logout", {}).then(({ data }) => data);
   }
 
   me() {
-    return this.auth.get("/me").then(({ data }) => data);
+    return this.auth.get("/api/me").then(({ data }) => data);
   }
 
   getTravelsList() {
-    return this.auth.get("/travel", {}).then(({ data }) => data);
+    return this.auth.get("/api/travel", {}).then(({ data }) => data);
   }
   getTravel(id) {
-    return this.auth.get(`/travel/${id}`, {}).then(({ data }) => data);
+    return this.auth.get(`/api/travel/${id}`, {}).then(({ data }) => data);
   }
   createTravel({
     travelName,
@@ -62,7 +62,7 @@ class Auth {
     coverPic,
   }) {
     return this.auth
-      .post("/travel/create", {
+      .post("/api/travel/create", {
         travelName,
         startDate,
         endDate,
@@ -85,7 +85,7 @@ class Auth {
     _id,
   }) {
     return this.auth
-      .patch(`/travel/edit/${_id}`, {
+      .patch(`/api/travel/edit/${_id}`, {
         travelName,
         startDate,
         endDate,
@@ -98,16 +98,16 @@ class Auth {
   }
 
   deleteTravel(_id) {
-    return this.auth.post(`/travel/delete/${_id}`, {}).then(({ data }) => data);
+    return this.auth.post(`/api/travel/delete/${_id}`, {}).then(({ data }) => data);
   }
 
   getProfile(_id) {
-    return this.auth.get(`/profile/${_id}`, {}).then(({ data }) => data);
+    return this.auth.get(`/api/profile/${_id}`, {}).then(({ data }) => data);
   }
 
   editProfile({ _id, username, userFrom, userBirthdate, about, profilePic }) {
     return this.auth
-      .patch(`/profile/edit/${_id}`, {
+      .patch(`/api/profile/edit/${_id}`, {
         username,
         userFrom,
         userBirthdate,
@@ -119,13 +119,13 @@ class Auth {
 
   createTask({ _id, taskName }) {
     return this.auth
-      .post(`/travel/${_id}/createtask`, { taskName })
+      .post(`/api/travel/${_id}/createtask`, { taskName })
       .then(({ data }) => data);
   }
 
   editTask({ _id, taskName, taskDeadline, assignTo, taskNote, doneTask }) {
     return this.auth
-      .post(`/task/edit/${_id}`, {
+      .post(`/api/task/edit/${_id}`, {
         taskName,
         taskDeadline,
         assignTo,
@@ -136,25 +136,25 @@ class Auth {
   }
 
   deleteTask({ _id }) {
-    return this.auth.post(`/task/delete/${_id}`, {}).then(({ data }) => data);
+    return this.auth.post(`/api/task/delete/${_id}`, {}).then(({ data }) => data);
   }
 
   createInvitation({ _id, guestEmail }) {
     return this.auth
-      .post(`/travel/${_id}/createinvite`, { guestEmail })
+      .post(`/api/travel/${_id}/createinvite`, { guestEmail })
       .then(({ data }) => data);
   }
 
   getInviteList() {
-    return this.auth.get("/invite", {}).then(({ data }) => data);
+    return this.auth.get("/api/invite", {}).then(({ data }) => data);
   }
 
   deleteInvite({ _id }) {
-    return this.auth.post(`/invite/${_id}/delete`, {}).then(({ data }) => data);
+    return this.auth.post(`/api/invite/${_id}/delete`, {}).then(({ data }) => data);
   }
 
   joinTravel({ _id }) {
-    return this.auth.post(`/travel/${_id}/join`, {}).then(({ data }) => data);
+    return this.auth.post(`/api/travel/${_id}/join`, {}).then(({ data }) => data);
   }
 }
 const axiosRequestFunctions = new Auth();

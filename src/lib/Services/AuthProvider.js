@@ -278,10 +278,10 @@ class AuthProvider extends React.Component {
   handleUpload(theFile) {
     return axios
       .create({
-        baseURL: process.env.REACT_APP_API_URI + "/api",
+        baseURL: process.env.REACT_APP_API_URI,
         withCredentials: true,
       })
-      .post("/upload", theFile)
+      .post("/api/upload", theFile)
       .then((res) => res.data)
       .catch((err) => console.log(err));
   }
@@ -290,10 +290,10 @@ class AuthProvider extends React.Component {
   handleUploadCoverPic(theFile) {
     return axios
       .create({
-        baseURL: process.env.REACT_APP_API_URI + "/api",
+        baseURL: process.env.REACT_APP_API_URI,
         withCredentials: true,
       })
-      .post("/upload/coverpic", theFile)
+      .post("/api/upload/coverpic", theFile)
       .then((res) => res.data)
       .catch((err) => console.log(err));
   }
