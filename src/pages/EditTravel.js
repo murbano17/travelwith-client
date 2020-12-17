@@ -16,7 +16,6 @@ class EditTravel extends Component {
       isPublic: false,
       coverPic: "",
       travelId: props.match.params.id,
-      _id: "",
     };
   }
 
@@ -26,22 +25,19 @@ class EditTravel extends Component {
 
   getTravel = () => {
     return this.props
-      .getTravelsList()
-      .then((resp) =>
-        resp.filter((eachTravel) => eachTravel._id === this.state.travelId)
-      )
-      .then((res) =>
+      .getTravel(this.state.travelId)
+      .then((res) => {
         this.setState({
-          travelName: res[0].travelName,
-          startDate: res[0].startDate,
-          endDate: res[0].endDate,
-          origin: res[0].origin,
-          destination: res[0].destination,
-          isPublic: res[0].isPublic,
-          coverPic: res[0].coverPic,
-          _id: res[0]._id,
-        })
-      )
+          travelName: res.travelName,
+          startDate: res.startDate,
+          endDate: res.endDate,
+          origin: res.origin,
+          destination: res.destination,
+          isPublic: res.isPublic,
+          coverPic: res.coverPic,
+          _id: res._id,
+        });
+      })
 
       .catch((err) => console.log(err));
   };
@@ -69,8 +65,8 @@ class EditTravel extends Component {
       isPublic,
       coverPic,
     });
-    this.getTravel();
-    this.props.history.push("/");
+    this.props.getTravel(this.state.travelId);
+    this.props.history.push(`/travel/${this.state.travelId}`);
   };
 
   handleChange = (event) => {
@@ -101,9 +97,9 @@ class EditTravel extends Component {
   render() {
     return (
       <div className="edit-travel-container">
-      <div className='arrow-back'>
+        <div className="arrow-back">
           <Link to={`/travel/${this.state.travelId}`}>
-            <i class="fas fa-arrow-left"></i>
+            <i className="fas fa-arrow-left"></i>
           </Link>
         </div>
         <div className="container-form">

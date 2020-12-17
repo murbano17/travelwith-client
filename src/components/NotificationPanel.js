@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
-import { Link } from "react-router-dom";
 
 class NotificationPanel extends Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class NotificationPanel extends Component {
       .getInviteList()
       .then((res) =>
         res.filter(
-          (eachInvite) => eachInvite.guestEmail == this.props.user.email
+          (eachInvite) => eachInvite.guestEmail === this.props.user.email
         )
       )
       .then((filt) => this.setState({ invitationToShow: filt }))

@@ -12,6 +12,7 @@ const withAuth = (WrappedComponent) => {
             login,
             signup,
             user,
+            travel,
             logout,
             isLoggedin,
             getTravelsList,
@@ -24,18 +25,19 @@ const withAuth = (WrappedComponent) => {
             deleteTask,
             createInvitation,
             joinTravel,
-            travel,
             handleUpload,
             handleUploadCoverPic,
             editTravel,
             deleteInvite,
             getInviteList,
+            getTravel,
           }) => {
             return (
               <WrappedComponent
                 login={login}
                 signup={signup}
                 user={user}
+                travel={travel}
                 logout={logout}
                 isLoggedin={isLoggedin}
                 getTravelsList={getTravelsList}
@@ -48,12 +50,12 @@ const withAuth = (WrappedComponent) => {
                 deleteTask={deleteTask}
                 createInvitation={createInvitation}
                 joinTravel={joinTravel}
-                travel={travel}
                 editTravel={editTravel}
                 handleUpload={handleUpload}
                 handleUploadCoverPic={handleUploadCoverPic}
                 deleteInvite={deleteInvite}
                 getInviteList={getInviteList}
+                getTravel={getTravel}
                 {...this.props}
               />
             );
@@ -66,7 +68,7 @@ const withAuth = (WrappedComponent) => {
 
 //Provider
 class AuthProvider extends React.Component {
-  state = { isLoggedin: false, user: null, isLoading: true };
+  state = { isLoggedin: false, user: null, isLoading: true, travel: null };
 
   componentDidMount() {
     auth
@@ -131,7 +133,12 @@ class AuthProvider extends React.Component {
       .then((res) => res)
       .catch((err) => console.log(err));
   };
-
+  getTravel = (id) => {
+    return auth
+      .getTravel(id)
+      .then((res) => res)
+      .catch((err) => console.log(err));
+  };
   getInviteList = () => {
     return auth
       .getInviteList()
@@ -271,7 +278,7 @@ class AuthProvider extends React.Component {
   handleUpload(theFile) {
     return axios
       .create({
-        baseURL: process.env.REACT_APP_API_URI,
+        baseURL: process.env.REACT_APP_API_URI + "/api",
         withCredentials: true,
       })
       .post("/upload", theFile)
@@ -283,7 +290,7 @@ class AuthProvider extends React.Component {
   handleUploadCoverPic(theFile) {
     return axios
       .create({
-        baseURL: process.env.REACT_APP_API_URI,
+        baseURL: process.env.REACT_APP_API_URI + "/api",
         withCredentials: true,
       })
       .post("/upload/coverpic", theFile)
@@ -296,12 +303,12 @@ class AuthProvider extends React.Component {
 
     return auth
       .joinTravel({ _id })
-      .then((response) => console.log(response))
+      .then((response) => response)
       .catch((err) => console.log(err));
   };
 
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, travel } = this.state;
     const {
       login,
       logout,
@@ -316,12 +323,12 @@ class AuthProvider extends React.Component {
       deleteTask,
       createInvitation,
       joinTravel,
-      travel,
       handleUpload,
       handleUploadCoverPic,
       editTravel,
       deleteInvite,
       getInviteList,
+      getTravel,
     } = this;
 
     return isLoading ? (
@@ -351,6 +358,7 @@ class AuthProvider extends React.Component {
           editTravel,
           deleteInvite,
           getInviteList,
+          getTravel,
         }}
       >
         {this.props.children}

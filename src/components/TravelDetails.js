@@ -13,23 +13,24 @@ export class TravelDetails extends Component {
     };
   }
   componentDidMount() {
-    this.getTravelDetails();
+    this.getTravel();
   }
 
-  getTravelDetails = () => {
+  componentDidUpdate() {
+    this.getTravel();
+  }
+
+  getTravel = () => {
     return this.props
-      .getTravelsList()
-      .then((resp) =>
-        resp.filter((eachTravel) => eachTravel._id === this.state.travelId)
-      )
-      .then((res) => this.setState({ travelToShow: res[0] }))
+      .getTravel(this.state.travelId)
+      .then((res) => this.setState({ travelToShow: res }))
       .catch((err) => console.log(err));
   };
 
   handleAccept = (e, travel) => {
     return this.props
       .joinTravel(travel)
-      .then(() => this.getTravelDetails())
+      .then(() => this.getTravel())
       .catch((err) => console.log("Error ", err));
   };
 
@@ -37,9 +38,9 @@ export class TravelDetails extends Component {
     const travel = this.state.travelToShow;
     return (
       <div className="travel-details-container">
-        <div className='arrow-back'>
+        <div className="arrow-back">
           <Link to={`/travel`}>
-            <i class="fas fa-arrow-left"></i>
+            <i className="fas fa-arrow-left"></i>
           </Link>
         </div>
         <div className="card card-details card-details-travel">
@@ -113,7 +114,7 @@ export class TravelDetails extends Component {
                     className="btn btn-secondary btn-join"
                     onClick={(e) => this.handleAccept(e, travel)}
                   >
-                    <i class="fas fa-plus"></i>{" "}
+                    <i className="fas fa-plus"></i>{" "}
                   </button>
                 </div>
               )}

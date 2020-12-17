@@ -13,12 +13,16 @@ class Travel extends Component {
     };
   }
 
-  componentDidMount() {
+  getTravelsList = () => {
     return this.props
       .getTravelsList()
       .then((response) => response.filter((travel) => travel.isPublic))
       .then((resp) => this.setState({ travelList: resp, travelToShow: resp }))
       .catch((err) => console.log(err));
+  };
+
+  componentDidMount() {
+    this.getTravelsList();
   }
 
   filterTravels = (searchString) => {

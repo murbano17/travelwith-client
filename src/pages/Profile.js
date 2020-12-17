@@ -21,7 +21,7 @@ class Profile extends Component {
   }
 
   render() {
-    let user = this.state.userToShow;
+    let user = this.props.user;
     return (
       <div className="profile-container">
         <div className="profile-card">

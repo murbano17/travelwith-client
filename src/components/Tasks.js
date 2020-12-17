@@ -85,7 +85,7 @@ class Tasks extends Component {
       <div className="toDoList-container">
         <div className="arrow-back">
           <Link to={`/travel/${this.state.travelId}`}>
-            <i class="fas fa-arrow-left"></i>
+            <i className="fas fa-arrow-left"></i>
           </Link>
         </div>
         <div className="todolist">
@@ -101,7 +101,7 @@ class Tasks extends Component {
             />
             <button type="submit" className="add">
               {" "}
-              <i class="fas fa-plus"></i>
+              <i className="fas fa-plus"></i>
             </button>
           </form>
           <ul className="list">
@@ -124,7 +124,7 @@ class Tasks extends Component {
                           className="deletetask"
                           onClick={(e) => this.handleDeleteTask(e, eachTask)}
                         >
-                          <i class="fas fa-times"></i>
+                          <i className="fas fa-times"></i>
                         </button>
                       </div>
                     </li>

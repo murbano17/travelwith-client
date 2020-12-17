@@ -13,7 +13,7 @@ class EditProfile extends Component {
   }
 
   componentDidMount() {
-    this.getProfile()
+    this.getProfile();
   }
 
   getProfile = () => {
@@ -29,7 +29,8 @@ class EditProfile extends Component {
           profilePic: user.profilePic,
         })
       )
-      .catch((err) => console.log(err));}
+      .catch((err) => console.log(err));
+  };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -42,14 +43,16 @@ class EditProfile extends Component {
       userBirthdate,
     } = this.state;
 
-    this.props.editProfile({
-      username,
-      userFrom,
-      about,
-      profilePic,
-      _id,
-      userBirthdate,
-    });
+    this.props
+      .editProfile({
+        username,
+        userFrom,
+        about,
+        profilePic,
+        _id,
+        userBirthdate,
+      })
+
     this.getProfile();
     this.props.history.push(`/profile/${this.state.userId}`);
   };
@@ -68,7 +71,6 @@ class EditProfile extends Component {
     this.props
       .handleUpload(uploadData)
       .then((response) => {
-        console.log("response is: ", response);
         this.setState({ profilePic: response.secure_url });
       })
       .catch((err) => {
@@ -76,78 +78,77 @@ class EditProfile extends Component {
       });
   };
 
-
   render() {
     return (
       <div className="edit-profile-container">
-      <div className='arrow-back'>
+        <div className="arrow-back">
           <Link to={`/profile/${this.state.userId}`}>
-            <i class="fas fa-arrow-left"></i>
+            <i className="fas fa-arrow-left"></i>
           </Link>
         </div>
-       <div className="container-form">
-        <h1>Edit Profile</h1>
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-          <div className="form-group">
-            <label>
-              <b>Username:</b>
-            </label>
+        <div className="container-form">
+          <h1>Edit Profile</h1>
+          <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+            <div className="form-group">
+              <label>
+                <b>Username:</b>
+              </label>
+              <input
+                className="form-control"
+                name="username"
+                type="text"
+                value={this.username}
+                onChange={this.handleChange}
+                placeholder={this.state.username}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>
+                <b>From:</b>
+              </label>
+              <input
+                className="form-control"
+                name="userFrom"
+                type="text"
+                value={this.userFrom}
+                onChange={this.handleChange}
+                placeholder={this.state.userFrom}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>
+                <b>About:</b>
+              </label>
+              <textarea
+                className="form-control"
+                name="about"
+                type="text"
+                value={this.about}
+                onChange={this.handleChange}
+                placeholder={this.state.about}
+              />
+            </div>
+
+            <div className="form-group">
+              <label>
+                <b>Profile picture:</b>
+              </label>
+              <input
+                className="form-control"
+                type="file"
+                name="profilePic"
+                onChange={this.handleFileUpload}
+              />
+            </div>
+
             <input
-              className="form-control"
-              name="username"
-              type="text"
-              value={this.username}
-              onChange={this.handleChange}
-              placeholder={this.state.username}
+              type="submit"
+              value="Edit Profile"
+              className="btn btn-secondary"
             />
-          </div>
-
-          <div className="form-group">
-            <label>
-              <b>From:</b>
-            </label>
-            <input
-              className="form-control"
-              name="userFrom"
-              type="text"
-              value={this.userFrom}
-              onChange={this.handleChange}
-              placeholder={this.state.userFrom}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>
-              <b>About:</b>
-            </label>
-            <textarea
-              className="form-control"
-              name="about"
-              type="text"
-              value={this.about}
-              onChange={this.handleChange}
-              placeholder={this.state.about}
-            />
-          </div>
-
-          <div className="form-group">
-            <label>
-              <b>Profile picture:</b>
-            </label>
-            <input
-              className="form-control"
-              type="file"
-              name="profilePic"
-              onChange={this.handleFileUpload}
-            />
-          </div>
-
-          <input
-            type="submit"
-            value="Edit Profile"
-            className="btn btn-secondary"
-          />
-        </form>
+          </form>
         </div>
       </div>
     );

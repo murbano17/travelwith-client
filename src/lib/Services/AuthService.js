@@ -3,7 +3,7 @@ import axios from "axios";
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: process.env.REACT_APP_API_URI,
+      baseURL: process.env.REACT_APP_API_URI + "/api",
       withCredentials: true,
     });
   }
@@ -49,7 +49,9 @@ class Auth {
   getTravelsList() {
     return this.auth.get("/travel", {}).then(({ data }) => data);
   }
-
+  getTravel(id) {
+    return this.auth.get(`/travel/${id}`, {}).then(({ data }) => data);
+  }
   createTravel({
     travelName,
     startDate,
