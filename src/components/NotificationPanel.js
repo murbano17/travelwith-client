@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
+import "../styles/Dashboard.css";
 
 class NotificationPanel extends Component {
   constructor(props) {
@@ -42,57 +43,58 @@ class NotificationPanel extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          {this.state.invitationToShow &&
+      <div className='notifications-panel'>
+          {this.state.invitationToShow.length >= 1 ? (
             this.state.invitationToShow.map((eachInvitation) => {
               return (
-                <div
-                  style={{ textDecoration: "none", color: "black" }}
-                  key={eachInvitation._id}
-                >
-                  <div className="card" style={{ width: "18rem" }}>
+                <div className="travel-card">
+                  <div className="img-card">
                     <img
                       src={eachInvitation.inviteTo.coverPic}
                       className="card-img-top"
-                      alt="..."
+                      alt="travelpic"
                     />
-                    <div className="card-body">
-                      <h5 className="card-title">
-                        {eachInvitation.inviteTo.travelName}
-                      </h5>
-                      <p className="card-text">
-                        Origin: {eachInvitation.inviteTo.origin}
-                      </p>
-                      <p className="card-text">
-                        Destination: {eachInvitation.inviteTo.destination}
-                      </p>
-                      <div>
-                        <button
-                          className="btn btn-secondary accept-invitation"
-                          onClick={(e) =>
-                            this.handleAccept(
-                              e,
-                              eachInvitation.inviteTo,
-                              eachInvitation
-                            )
-                          }
-                        >
-                          Accept
-                        </button>
-                        <button
-                          className="btn btn-secondary delete-invitation"
-                          onClick={(e) => this.handleDecline(e, eachInvitation)}
-                        >
-                          Decline
-                        </button>
-                      </div>
-                    </div>
                   </div>
+                  <div className="card-travel-body">
+                    <h5 className="card-travel-title">
+                      {eachInvitation.inviteTo.travelName}
+                    </h5>
+                    <hr />
+                    <p className="card-travel-destination">
+                      {eachInvitation.inviteTo.origin} -{" "}
+                      {eachInvitation.inviteTo.destination}
+                    </p>
+                    <p className="card-travel-date">
+                      <i className="far fa-calendar-plus"></i>{" "}
+                      {eachInvitation.inviteTo.startDate} -{" "}
+                      {eachInvitation.inviteTo.endDate}
+                    </p>
+                  </div>
+
+                  <button
+                    className="accept-invitation"
+                    onClick={(e) =>
+                      this.handleAccept(
+                        e,
+                        eachInvitation.inviteTo,
+                        eachInvitation
+                      )
+                    }
+                  >
+                    Accept
+                  </button>
+                  <button
+                    className="delete-invitation"
+                    onClick={(e) => this.handleDecline(e, eachInvitation)}
+                  >
+                    Decline
+                  </button>
                 </div>
               );
-            })}
-        </ul>
+            })
+          ) : (
+            <p className='no-notifications'>You don't have invitations</p>
+          )}
       </div>
     );
   }

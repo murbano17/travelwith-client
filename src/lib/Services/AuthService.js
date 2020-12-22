@@ -45,7 +45,9 @@ class Auth {
   me() {
     return this.auth.get("/api/me").then(({ data }) => data);
   }
-
+  findUser(id) {
+    return this.auth.get(`/api/user/${id}`, {}).then(({ data }) => data);
+  }
   getTravelsList() {
     return this.auth.get("/api/travel", {}).then(({ data }) => data);
   }
@@ -98,7 +100,9 @@ class Auth {
   }
 
   deleteTravel(_id) {
-    return this.auth.post(`/api/travel/delete/${_id}`, {}).then(({ data }) => data);
+    return this.auth
+      .post(`/api/travel/delete/${_id}`, {})
+      .then(({ data }) => data);
   }
 
   getProfile(_id) {
@@ -136,7 +140,9 @@ class Auth {
   }
 
   deleteTask({ _id }) {
-    return this.auth.post(`/api/task/delete/${_id}`, {}).then(({ data }) => data);
+    return this.auth
+      .post(`/api/task/delete/${_id}`, {})
+      .then(({ data }) => data);
   }
 
   createInvitation({ _id, guestEmail }) {
@@ -150,11 +156,15 @@ class Auth {
   }
 
   deleteInvite({ _id }) {
-    return this.auth.post(`/api/invite/${_id}/delete`, {}).then(({ data }) => data);
+    return this.auth
+      .post(`/api/invite/${_id}/delete`, {})
+      .then(({ data }) => data);
   }
 
   joinTravel({ _id }) {
-    return this.auth.post(`/api/travel/${_id}/join`, {}).then(({ data }) => data);
+    return this.auth
+      .post(`/api/travel/${_id}/join`, {})
+      .then(({ data }) => data);
   }
 }
 const axiosRequestFunctions = new Auth();

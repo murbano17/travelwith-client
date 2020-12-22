@@ -8,13 +8,18 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
+      messageError: "",
     };
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { email, password } = this.state;
-    this.props.login({ email, password });
+
+    const validationForm = this.isFormValid();
+    if (validationForm) {
+      this.props.login({ email, password });
+    }
   };
 
   handleChange = (event) => {
@@ -23,16 +28,40 @@ class Login extends Component {
       [name]: value,
     });
   };
+  isFormValid = () => {
+    if (this.state.email.trim().length === 0) {
+      this.setState({ messageError: "Name is required" });
+      return false;
+    } else if (this.state.password.trim().length === 0) {
+      this.setState({
+        messageError: "Password is required",
+      });
+      return false;
+    }
+    this.setState({ messageError: "" });
+    return true;
+  };
 
   render() {
     return (
       <div className="login-container">
         <div className="container-form">
-          <h1>Login</h1>
+          <h1>Welcome,</h1>
+          <h4>Sign in to continue </h4>
+          {this.state.messageError.length > 0 ? (
+            <div className="oaerror danger">
+              <strong>Error</strong> - {this.state.messageError}.
+            </div>
+          ) : null}
+          {this.props.message.length > 0 ? (
+            <div className="oaerror danger">
+              <strong>Error</strong> - {this.props.message}.
+            </div>
+          ) : null}
           <form onSubmit={this.handleFormSubmit}>
             <div className="form-group">
               <label>
-                <b>Email</b>
+                <b>Email*</b>
               </label>
               <input
                 className="form-control"
@@ -44,7 +73,7 @@ class Login extends Component {
             </div>
             <div className="form-group">
               <label>
-                <b>Password</b>
+                <b>Password*</b>
               </label>
               <input
                 className="form-control"
@@ -54,12 +83,13 @@ class Login extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <input type="submit" value="Login" className="btn btn-secondary" />
+            <button type="submit" className="button">
+              <span>Sign in</span>
+            </button>
           </form>
           <p className="account">
             Don't have an account?
             <Link className="link" to={"/signup"}>
-              {" "}
               Create one
             </Link>
           </p>

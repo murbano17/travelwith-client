@@ -1,0 +1,126 @@
+/*Dashboard*/
+
+.dashboard-header {
+    height: 20vh;
+    padding: 30px 30px 0px 30px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.dashboard-header h1 {
+    color: black;
+    border-bottom: 10px solid #ff6525;
+}
+
+.ownTravels-container,
+.joinedTravels-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: initial;
+    justify-content: space-evenly;
+}
+
+.dashboard-container h2 {
+    color: black;
+    margin: 30px 30px 0px 30px;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.delete-invitation {
+    background: transparent;
+    width: 6rem;
+    color: #E32524;
+    transition: all 0.5s ease;
+    border: 1px solid #E32524;
+    margin: 10px 20px;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+
+
+}
+
+.delete-invitation:hover {
+    border: 1px solid #E32524;
+    background: #E32524;
+    color: white;
+}
+
+
+
+.accept-invitation {
+    color: green;
+    background: transparent;
+    width: 6rem;
+    border: 1px solid green;
+    margin: 10px 20px;
+    font-weight: 400;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+}
+
+.accept-invitation:hover {
+    border: 1px solid green;
+    background: green;
+    color: white;
+}
+
+
+.notification-panel-container h2 {
+    align-self: flex-start;
+
+}
+
+.notifications-panel {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+
+.notifications-panel .no-notifications {
+    align-self: flex-start;
+    margin: 10px 10px 0px 30px;
+    font-size: 1.1rem;
+
+}
+
+@media only screen and (min-width: 600px) {
+    .dashboard-header {
+        padding: 30px 30px 0px 0px;
+
+    }
+
+    .dashboard-header h1 {
+        margin: 20px 0px 0px 50px;
+    }
+
+    .dashboard-container h2 {
+        margin: 30px 0px 0px 50px;
+    }
+
+    .notifications-panel .no-notifications {
+        margin: 30px 0px 0px 50px;
+
+    }
+
+
+}
+
+@media only screen and (min-width: 768px) {
+
+    .ownTravels-container,
+    .joinedTravels-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: initial;
+        justify-content: center;
+        margin: 0 30px;
+    }
+}

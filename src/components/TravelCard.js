@@ -1,23 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/Card.css";
 
 const TravelCard = (props) => {
   //   const eachTravel = props.eachTravel
   return (
-    <Link to={`/travel/${props._id}`} >
-    <div className="card" style={{ width: "18rem" }}>
-      <div className="img-card">
-        <img src={props.coverPic} className="card-img-top" alt="travelpic" />
+    <Link to={`/travel/${props._id}`}>
+      <div className="travel-card" >
+        <div className="img-card">
+          <img src={props.coverPic} className="card-img-top" alt="travelpic" />
+        </div>
+        <div className="card-travel-body">
+          <h5 className="card-travel-title">{props.travelName}</h5>
+          <hr />
+          <p className="card-travel-destination">
+            {props.origin} - {props.destination}
+          </p>
+          <p className="card-travel-date">
+            <i className="far fa-calendar-plus"></i> {props.startDate} -{" "}
+            {props.endDate}
+          </p>
+        </div>
       </div>
-      <div className="card-body">
-        <h5 className="card-title">{props.travelName}</h5>
-        <p className="card-text destination">{props.origin} - {props.destination}</p>
-        <p className="card-text">{props.startDate} - {props.endDate}</p>
-        {/* <Link className="btn btn-primary" to={`/travel/${props._id}`}>
-          See travel details
-        </Link> */}
-      </div>
-    </div>
     </Link>
   );
 };

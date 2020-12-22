@@ -1,0 +1,120 @@
+.create-travel-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: initial;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.header-create-travel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 60vh;
+    background: url("../images/create-travel.jpg");
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: bottom left;
+    background-size: 115%;
+
+}
+
+.header-create-travel-titles {
+    margin: 40px 30px 0px 30px;
+    background-color: rgba(255, 255, 255, .7);
+    padding: 20px 20px 20px 0;
+}
+
+.header-create-travel h1 {
+
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: black;
+    line-height: 2.7rem;
+}
+
+.header-create-travel h3 {
+    font-weight: 400;
+    font-size: 1.7rem;
+}
+
+.form-check-label b {
+    margin-right: 10px;
+}
+
+input[type="checkbox"] {
+    height: 1.2rem;
+    width: 1.2rem;
+    vertical-align: middle;
+    border: 1px solid black;
+    background: transparent;
+    -webkit-appearance: none;
+
+}
+
+input[type="checkbox"]:checked:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: bold;
+    color: black;
+    content: '\f00c';
+    font-size: 1.2rem;
+}
+
+.form-create-travel {
+    margin-bottom: 50px;;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .header-create-travel {
+        background-size: 100%;
+        background-position: bottom right;
+
+    }
+
+
+    .header-create-travel-titles {
+        margin: 80px 30px 0px 70px;
+        background-color: rgba(255, 255, 255, .6);
+
+    }
+
+    .form-create-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+}
+
+@media only screen and (min-width: 992px) {
+
+    .header-create-travel {
+        background-size: 45%;
+        background-position: center right;
+        height: 35vh;
+
+    }
+
+
+    .header-create-travel-titles {
+        margin: 120px 60px 0px 100px;
+        background-color: rgba(255, 255, 255, .6);
+
+    }
+
+    .form-create-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-create-travel {
+        width: 50%;
+    }
+
+
+}

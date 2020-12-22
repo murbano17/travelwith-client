@@ -1,0 +1,364 @@
+* {
+  font-family: 'Rubik', sans-serif;
+
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+input:focus,
+input.form-control:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.done {
+  color: lightgray;
+  text-decoration: line-through #ff6525;
+  text-decoration-thickness: 4px;
+}
+
+.button {
+  background: transparent;
+  color: black;
+  border: none;
+  transition: all 0.5s ease;
+  padding: 7px 26px;
+  margin-top: 10px;
+  border: 1px solid black;
+  font-weight: 400;
+}
+
+.button:hover {
+  border: 1px solid black;
+  background: black;
+  color: white;
+}
+
+
+/*Navbar*/
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0,0,0)' stroke-width='2.2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+.bg-custom {
+  background-color: white;
+}
+
+.ulnavbar li {
+  font-size: 1.1rem;
+}
+
+.image-navbar img {
+  margin-top: 5px;
+  height: 65px;
+  width: 65px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.button-navbar {
+  border: none;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.logo-navbar {
+  width: 40%;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+  color: black;
+  padding-left: 10px;
+}
+
+.arrow-back {
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.arrow-back i {
+  color: black;
+}
+
+/*Login - Sign up*/
+.login-container {
+  padding: 30px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.container-form {
+  padding: 30px;
+  background-color: white;
+  border-bottom: 2px solid black;
+
+}
+
+.container-form-signup {
+  margin: 20px;
+}
+
+.login-container h1,
+.signup-container h1 {
+  color: black;
+  margin: 0;
+}
+
+.login-container h4,
+.signup-container h4 {
+  color: #808080;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+
+}
+
+.form-group label {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: .8rem;
+  margin: 0;
+}
+
+.form-group input {
+  border: none;
+  border: 1px solid black;
+  border-radius: 0px;
+}
+
+
+.form-group input:focus {
+  border: none;
+  border: 2px solid black;
+  border-radius: 0px;
+}
+
+.account {
+  margin-top: 20px;
+  font-size: .9rem;
+
+}
+
+.link {
+  color: #ff6525;
+  padding-left: 5px;
+  transition: all .3s ease;
+
+}
+
+.link :hover {
+  color: black;
+  padding-left: 5px;
+}
+
+.error-signup {
+  color: #E32524;
+
+}
+
+.oaerror {
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  margin: 10px auto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.danger{
+  border-left-color: #d9534f;
+  background-color: rgba(217, 83, 79, 0.1);}
+
+.danger strong {
+  color:#d9534f;
+}
+.success {
+  border-left-color: #2b542c;
+  background-color: rgba(43, 84, 44, 0.1);
+}
+
+.success strong {
+  color: #2b542c;
+}
+
+/*Edit profile*/
+
+.edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.edit-profile-container h1 {
+  color: #ff6525;
+  font-weight: 600;
+}
+
+/*Edit travel*/
+
+/*Travel details*/
+
+/*toDoList*/
+.toDoList-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding: 20px;
+}
+
+.toDoList-container h2 {
+  color: #ff6525;
+}
+
+.todolist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add {
+  color: #ff6525;
+  background-color: white;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.add:focus {
+  color: #ff6525;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  margin: 15px;
+  padding-left: 30px;
+  font-size: 1.3rem;
+}
+
+.eachTask {
+  display: flex;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.addTask {
+  width: 250px;
+  height: 50px;
+}
+
+.addTask:focus {
+  color: #ff6525;
+}
+
+.eachTask p {
+  width: 180px;
+  margin: 0;
+}
+
+.deletetask {
+  color: #ff6525;
+  background-color: white;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.btn-join {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 858px) {
+
+  /*Navbar*/
+  .ulnavbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+  }
+
+  .ulnavbar li {
+    margin: 10px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ulnavbar li i {
+    padding-top: 30px;
+  }
+
+  .logo-navbar {
+    width: 55%;
+  }
+
+  .create-travel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signup-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .edit-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .edit-travel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+}

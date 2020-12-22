@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
 import NotificationPanel from "../components/NotificationPanel";
+import "../styles/Card.css";
+import "../styles/Dashboard.css";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -29,40 +31,42 @@ class Dashboard extends Component {
       .catch((err) => console.log(err));
   }
 
-  // separar en dos array, a)  de los que soy owner, b) de los que soy miembro (s/ser owner) con filter
-  //ponerlos en variables en state, y mostrar en dos componentes TravelCard distintos
-
   render() {
     return (
       <div className="dashboard-container">
-          <div>
-            <h2>Invitations:</h2>
-            <NotificationPanel user={this.state.userToShow} />
-          </div>
-        
+        <div className="dashboard-header">
+          <h1>Dashboard</h1>
+        </div>
 
-        <h2>Organizer of: </h2>
+        <div className="notification-panel-container">
+          <h2>Your invitations</h2>
+          <NotificationPanel user={this.state.userToShow} />
+        </div>
+
+        <h2>Trips organized by you </h2>
         <div className="ownTravels-container">
           {this.state.travelsOwned &&
             this.state.travelsOwned.map((eachTravel) => {
               return (
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to={`/travel/${eachTravel._id}`}
-                  key={eachTravel._id}
-                >
-                  <div className="card" style={{ width: "18rem" }}>
-                    <img
-                      src={eachTravel.coverPic}
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{eachTravel.travelName}</h5>
-                      <p className="card-text destination">
+                <Link to={`/travel/${eachTravel._id}`} key={eachTravel._id}>
+                  <div className="travel-card">
+                    <div className="img-card">
+                      <img
+                        src={eachTravel.coverPic}
+                        className="card-img-top"
+                        alt="travelpic"
+                      />
+                    </div>
+                    <div className="card-travel-body">
+                      <h5 className="card-travel-title">
+                        {eachTravel.travelName}
+                      </h5>
+                      <hr />
+                      <p className="card-travel-destination">
                         {eachTravel.origin} - {eachTravel.destination}
                       </p>
-                      <p className="card-text">
+                      <p className="card-travel-date">
+                        <i className="far fa-calendar-plus"></i>{" "}
                         {eachTravel.startDate} - {eachTravel.endDate}
                       </p>
                     </div>
@@ -72,28 +76,30 @@ class Dashboard extends Component {
             })}
         </div>
 
-        <h2>Member of:</h2>
+        <h2>Trips that you are member</h2>
         <div className="joinedTravels-container">
           {this.state.travelsJoined &&
             this.state.travelsJoined.map((eachTravel) => {
               return (
-                <Link
-                  style={{ textDecoration: "none", color: "black" }}
-                  to={`/travel/${eachTravel._id}`}
-                  key={eachTravel._id}
-                >
-                  <div className="card" style={{ width: "18rem" }}>
-                    <img
-                      src={eachTravel.coverPic}
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{eachTravel.travelName}</h5>
-                      <p className="card-text destination">
+                <Link to={`/travel/${eachTravel._id}`} key={eachTravel._id}>
+                  <div className="travel-card">
+                    <div className="img-card">
+                      <img
+                        src={eachTravel.coverPic}
+                        className="card-img-top"
+                        alt="travelpic"
+                      />
+                    </div>
+                    <div className="card-travel-body">
+                      <h5 className="card-travel-title">
+                        {eachTravel.travelName}
+                      </h5>
+                      <hr />
+                      <p className="card-travel-destination">
                         {eachTravel.origin} - {eachTravel.destination}
                       </p>
-                      <p className="card-text">
+                      <p className="card-travel-date">
+                        <i className="far fa-calendar-plus"></i>{" "}
                         {eachTravel.startDate} - {eachTravel.endDate}
                       </p>
                     </div>

@@ -2,52 +2,57 @@ import React, { Component } from "react";
 // import { withServices } from "../lib/Services/ServicesProvider";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
+import "../styles/Profile.css";
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userId: props.match.params.id,
-      userToShow: [],
+      userToShow: "",
       currentUser: "",
     };
   }
 
-  componentDidMount() {
+  getProfile = () => {
     return this.props
       .getProfile(this.state.userId)
       .then((resp) => this.setState({ userToShow: resp }))
       .catch((err) => console.log(err));
-  }
+  };
+
+  componentDidMount = () => {
+    this.getProfile();
+  };
 
   render() {
-    let user = this.props.user;
     return (
       <div className="profile-container">
+        <div className="profile-header">
+          <h1>Profile</h1>
+        </div>
+
         <div className="profile-card">
           <div className="profile-image">
-            <img src={user.profilePic} alt="user-pic" />
+            <img src={this.state.userToShow.profilePic} alt="user-pic" />
           </div>
           <div>
-            <h5>{user.username}</h5>
+            <h5>{this.state.userToShow.username}</h5>
             <div className="profile-info">
               <p>
-                <b>From:</b> {user.userFrom}
+                <b>From:</b> {this.state.userToShow.userFrom}
               </p>
               <p>
-                <b>About me:</b> {user.about}
+                <b>About me:</b> {this.state.userToShow.about}
               </p>
             </div>
-            {this.props.user._id === user._id ? (
+            {this.props.user._id === this.state.userToShow._id ? (
               <div className="links-profile">
-                <Link to={`/profile/${user._id}/dashboard`}>
-                  <p>My dashboard</p>
+                <Link to={`/profile/${this.state.userToShow._id}/dashboard`}>
+                  <button className="profile-btn">My dashboard</button>
                 </Link>
-                <Link to={`/profile/edit/${user._id}`}>
-                  <p>
-
-                    <i className="fas fa-edit icon" />
-                  </p>
+                <Link to={`/profile/edit/${this.state.userToShow._id}`}>
+                  <button className="edit-profile-btn">Edit profile</button>
                 </Link>
               </div>
             ) : null}

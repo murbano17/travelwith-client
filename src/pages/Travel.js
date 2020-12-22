@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import TravelCard from "../components/TravelCard";
 import { withAuth } from "../lib/Services/AuthProvider";
 import SearchBar from "../components/SearchBar";
+import "../styles/Travel.css";
 
 class Travel extends Component {
   constructor(props) {
@@ -13,17 +14,14 @@ class Travel extends Component {
     };
   }
 
-  getTravelsList = () => {
-    return this.props
-      .getTravelsList()
-      .then((response) => response.filter((travel) => travel.isPublic))
-      .then((resp) => this.setState({ travelList: resp, travelToShow: resp }))
-      .catch((err) => console.log(err));
+  componentDidMount = async () => {
+    const allTravels = await this.props.getTravelsList();
+    const filteredTravels = allTravels.filter((travel) => travel.isPublic);
+    this.setState({
+      travelList: filteredTravels,
+      travelToShow: filteredTravels,
+    });
   };
-
-  componentDidMount() {
-    this.getTravelsList();
-  }
 
   filterTravels = (searchString) => {
     const lowerSearchString = searchString.toLowerCase();
@@ -47,6 +45,10 @@ class Travel extends Component {
     return (
       <div className="container-travel">
         <div className="header">
+          <h1>Are you looking for a travel?</h1>
+          <h3>Find your best option and join with friends!</h3>
+        </div>
+        <div className="container-search-bar">
           <SearchBar filterTravels={this.filterTravels} />
         </div>
         <div className="travelList-container">

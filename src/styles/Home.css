@@ -1,0 +1,158 @@
+/*Home*/
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-container h1 {
+    margin: 40px 30px 10px 30px;
+    font-weight: 600;
+    font-size: 2.8rem;
+    color: black;
+    line-height: 2.7rem;
+}
+
+.home-container h3 {
+    margin: 0px 30px;
+    font-weight: 400;
+    font-size: 1.7rem;
+}
+
+.home-header {
+    background: url("../images/home-01.jpg");
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: right bottom;
+    background-size: 170%;
+    height: 80vh;
+}
+
+.btn-home-container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 30px 10px 30px;
+
+}
+
+.button-home {
+    width: 8rem;
+    background: black;
+    color: white;
+    transition: all 0.5s ease;
+    border: 1px solid black;
+    margin: 10px 20px;
+    font-weight: 400;
+    padding: 7px 26px;
+
+}
+
+.btn-login {
+    width: 8rem;
+}
+
+.button-home:hover {
+    border: 1px solid black;
+    background: white;
+    color: black;
+}
+
+/*tablets*/
+@media only screen and (min-width: 600px) {
+    .home-container h1 {
+        margin: 80px 30px 10px 70px;
+
+    }
+
+    .home-container h3 {
+        margin: 20px 30px 10px 70px;
+
+    }
+
+    .home-header {
+        background-size: 140%;
+        height: 75vh;
+    }
+
+    .btn-home-container {
+        margin: 20px 30px 10px 70px;
+
+    }
+
+}
+
+/*desktop*/
+
+@media only screen and (min-width: 768px) {
+    .home-container h1 {
+        margin: 120px 60px 10px 70px;
+        font-size: 3.6rem;
+        line-height: 3.5rem;
+
+    }
+
+    .home-container h3 {
+        margin: 20px 30px 10px 70px;
+        font-size: 2rem;
+        width: 70%;
+        line-height: 2.5rem;
+    }
+
+    .button-home {
+        width: 11rem;
+        font-size: 1.3rem;
+        padding: 7px 26px;
+
+    }
+
+    .btn-login {
+        width: 11rem;
+        font-size: 1.3rem;
+
+    }
+
+    .button-home:hover {
+        border: 1px solid black;
+        background: white;
+        color: black;
+    }
+
+    .home-header {
+        background-size: 140%;
+        height: 85vh;
+    }
+
+    .btn-home-container {
+        margin: 20px 30px 10px 70px;
+
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .home-container {
+        justify-content: center;
+    }
+
+    .home-container h1 {
+        justify-self: center;
+        margin: 120px 60px 10px 100px;
+        font-size: 4rem;
+        line-height: auto;
+
+    }
+
+    .home-container h3 {
+        margin: 50px 30px 10px 100px;
+        width: 40%;
+        line-height: auto;
+    }
+
+    .home-header {
+        background-size: 80%;
+        height: 70vh;
+    }
+
+    .btn-home-container {
+        margin: 50px 30px 10px 100px;
+
+    }
+}

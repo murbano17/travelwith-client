@@ -31,6 +31,8 @@ const withAuth = (WrappedComponent) => {
             deleteInvite,
             getInviteList,
             getTravel,
+            findUser,
+            message,
           }) => {
             return (
               <WrappedComponent
@@ -56,6 +58,8 @@ const withAuth = (WrappedComponent) => {
                 deleteInvite={deleteInvite}
                 getInviteList={getInviteList}
                 getTravel={getTravel}
+                findUser={findUser}
+                message={message}
                 {...this.props}
               />
             );
@@ -68,7 +72,13 @@ const withAuth = (WrappedComponent) => {
 
 //Provider
 class AuthProvider extends React.Component {
-  state = { isLoggedin: false, user: null, isLoading: true, travel: null };
+  state = {
+    isLoggedin: false,
+    user: null,
+    isLoading: true,
+    travel: null,
+    message: "",
+  };
 
   componentDidMount() {
     auth
@@ -117,13 +127,22 @@ class AuthProvider extends React.Component {
     auth
       .login({ email, password })
       .then((user) => this.setState({ isLoggedin: true, user }))
-      .catch((err) => console.log(err));
+      .catch(({ response }) => {
+        this.setState({ message: "The username or password is incorrect" });
+      });
   };
 
   logout = () => {
     auth
       .logout()
       .then(() => this.setState({ isLoggedin: false, user: null }))
+      .catch((err) => console.log(err));
+  };
+
+  findUser = (id) => {
+    return auth
+      .findUser(id)
+      .then((res) => res)
       .catch((err) => console.log(err));
   };
 
@@ -308,7 +327,7 @@ class AuthProvider extends React.Component {
   };
 
   render() {
-    const { isLoading, isLoggedin, user, travel } = this.state;
+    const { isLoading, isLoggedin, user, travel, message } = this.state;
     const {
       login,
       logout,
@@ -329,6 +348,7 @@ class AuthProvider extends React.Component {
       deleteInvite,
       getInviteList,
       getTravel,
+      findUser,
     } = this;
 
     return isLoading ? (
@@ -359,6 +379,8 @@ class AuthProvider extends React.Component {
           deleteInvite,
           getInviteList,
           getTravel,
+          findUser,
+          message,
         }}
       >
         {this.props.children}

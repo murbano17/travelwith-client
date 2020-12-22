@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./styles/App.css";
 import { Switch } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -10,7 +10,6 @@ import AnonRoute from "./components/AnonRoute";
 import AuthProvider from "./lib/Services/AuthProvider";
 import Navbar from "./components/Navbar";
 import CreateTravel from "./pages/CreateTravel";
-// import { ServiceProvider } from "./lib/Services/ServicesProvider";
 import TravelDetails from "./components/TravelDetails";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";

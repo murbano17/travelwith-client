@@ -19,9 +19,9 @@ class Navbar extends Component {
     const { user, logout, isLoggedin } = this.props;
     
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-custom ">
+      <nav className="navbar navbar-expand-lg navbar-light navbar-custom ">
         <button
-          className="navbar-toggler button-navbar"
+          className="custom-toggler navbar-toggler button-navbar"
           type="button"
           data-toggle="collapse"
           data-target="#navbarTogglerDemo03"
@@ -29,7 +29,7 @@ class Navbar extends Component {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon icon-navbar"></span>
+          <span className=" navbar-toggler-icon icon-navbar"></span>
         </button>
         <Link to={"/"} className="navbar-brand ">
           <img className="logo-navbar" src="../../images/logo.png" alt="logo" />
@@ -40,7 +40,9 @@ class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to={"/travel"} >
                   Find a travel
+                  <span className='span-link'></span>
                 </Link>
+               
               </li>
               <li className="nav-item">
                 <Link

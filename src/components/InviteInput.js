@@ -65,7 +65,7 @@ class InviteInput extends Component {
             placeholder="email@email.com"
           />
           <input
-            className="btn btn-secondary send-invitation-btn"
+            className="button"
             type="submit"
             value="Send Invites"
             onClick={(e) => this.showMessage(e)}
