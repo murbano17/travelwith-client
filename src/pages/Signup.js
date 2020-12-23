@@ -75,6 +75,11 @@ class Signup extends Component {
       [name]: value,
     });
   };
+
+  handlePictureClick = () => {
+    document.querySelector("#fileSelectorSignUp").click();
+  };
+
   render() {
     return (
       <div className="signup-container">
@@ -93,7 +98,7 @@ class Signup extends Component {
             </div>
           ) : null}
 
-          <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+          <form onSubmit={this.handleFormSubmit} encType="multipart/form-data" className='form-signup'>
             <div className="form-group">
               <label>
                 <b>Username*</b>
@@ -139,10 +144,17 @@ class Signup extends Component {
               </label>
               <input
                 className="form-control"
+                style={{ display: "none" }}
+                id="fileSelectorSignUp"
                 type="file"
                 name="profilePic"
                 value={this.profilePic}
                 onChange={this.handleChange}
+              />
+              <input
+                className="form-control image-input"
+                onClick={this.handlePictureClick}
+                placeholder="Upload file"
               />
             </div>
             <div className="form-group">
@@ -198,9 +210,8 @@ class Signup extends Component {
             </button>
           </form>
           <p className="account">
-            Already a member?{" "}
+            Already a member?
             <Link className="link" to={"/login"}>
-              {" "}
               Log in
             </Link>
           </p>

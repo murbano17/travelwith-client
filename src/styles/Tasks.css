@@ -1,0 +1,131 @@
+.toDoList-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.todolist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 18rem;
+}
+
+.toDoList-container h4 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.form-tasks input {
+    border: none;
+    border: 1px solid black;
+    border-radius: 0px;
+    width: 13rem;
+}
+
+
+.form-tasks input:focus {
+    border: none;
+    border: 2px solid black;
+    border-radius: 0px;
+}
+
+.form-tasks input {
+    text-indent: 10px;
+
+}
+
+.add {
+    border: 2px solid black;
+    background-color: black;
+    color: white;
+}
+
+.form-tasks input:focus~.add {
+    border: 3px solid black;
+
+}
+
+.list {
+    padding: 0;
+    list-style: none;
+    margin-top: 30px;
+    display: flex;
+    align-items: initial;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.1rem;
+    width: 100%
+}
+
+.list li {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.list p {
+    margin-right: 20px;
+}
+
+.eachTask {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+
+}
+
+.eachTask p {
+    align-self: center;
+    margin-top: 15px;
+}
+
+.eachTask button {
+    margin-right: 20px;
+    transition: all 0.25s ease;
+
+}
+
+.eachTask button:hover {
+    color: #808080
+}
+
+.done {
+    transition: all 0.25s ease;
+    color: #808080;
+    text-decoration: line-through black;
+    text-decoration-thickness: 2px;
+}
+
+.deletetask {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+
+}
+
+@media only screen and (min-width: 600px) {
+
+    .todolist {
+        width: 28rem;
+    }
+
+    .form-tasks input {
+        height: 2.5rem;
+        width: 23em;
+    }
+
+    .add {
+
+        height: 2.5rem;
+
+    }
+}

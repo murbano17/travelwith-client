@@ -1,0 +1,70 @@
+.edit-travel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.edit-travel-form-container {
+    width: 100%;
+    padding: 30px;
+}
+.edit-profile-form-container {
+    width: 100%;
+    padding: 30px;
+}
+.header-edit-travel {
+    height: 15vh;
+    padding: 30px 30px 0px 30px;
+    align-self: flex-start;
+    display: flex;
+    align-items: flex-end;
+
+}
+
+.header-edit-travel h1 {
+    padding: 0;
+    margin: 0;
+    color: black;
+    border-bottom: 10px solid #ff6525;
+}
+
+.image-input {
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+    .edit-travel-form-container {
+        margin: 30px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .edit-travel-form {
+        width: 65%;
+    }
+
+    .header-edit-travel {
+        padding: 30px 30px 0px 0px;
+
+    }
+
+    .header-edit-travel h1 {
+        margin: 20px 0px 0px 50px;
+    }
+
+    .edit-travel-container {
+        margin: 50px;
+    }
+
+    .edit-travel-form-container {
+        width: 70%;
+    }
+    .edit-profile-form-container {
+        width: 40%;
+
+    }
+
+}

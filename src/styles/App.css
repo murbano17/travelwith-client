@@ -1,6 +1,5 @@
 * {
   font-family: 'Rubik', sans-serif;
-
 }
 
 a {
@@ -9,7 +8,7 @@ a {
 }
 
 input:focus,
-input.form-control:focus {
+textarea:focus {
   outline: none !important;
   outline-width: 0 !important;
   box-shadow: none;
@@ -22,11 +21,11 @@ a:hover {
   color: black;
 }
 
-.done {
-  color: lightgray;
-  text-decoration: line-through #ff6525;
-  text-decoration-thickness: 4px;
+textarea {
+  resize: none;
+  height: 10rem;
 }
+
 
 .button {
   background: transparent;
@@ -89,23 +88,58 @@ a:hover {
   padding-left: 10px;
 }
 
+.logout {
+  padding-left: 10px;
+  padding-top: 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: #ff6525;
+}
+
 .arrow-back {
   align-self: flex-start;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 1rem;
+  padding: 30px 30px 15px 40px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.arrow-back span:hover {
+  text-decoration: underline;
+  display: inline;
 }
 
 .arrow-back i {
   color: black;
+  padding-right: 10px;
 }
 
 /*Login - Sign up*/
 .login-container {
   padding: 30px;
-  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #eee;
+
+}
+
+.login-form {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.container-form-signup {
+  margin: 20px;
 
 }
 
@@ -116,9 +150,11 @@ a:hover {
 
 }
 
-.container-form-signup {
-  margin: 20px;
+.signup-container {
+  background-color: #eee;
+  padding: 10px;
 }
+
 
 .login-container h1,
 .signup-container h1 {
@@ -147,8 +183,19 @@ a:hover {
   border-radius: 0px;
 }
 
-
 .form-group input:focus {
+  border: none;
+  border: 2px solid black;
+  border-radius: 0px;
+}
+
+.form-group textarea {
+  border: none;
+  border: 1px solid black;
+  border-radius: 0px;
+}
+
+.form-group textarea:focus {
   border: none;
   border: 2px solid black;
   border-radius: 0px;
@@ -188,13 +235,15 @@ a:hover {
   font-size: 16px;
 }
 
-.danger{
+.danger {
   border-left-color: #d9534f;
-  background-color: rgba(217, 83, 79, 0.1);}
+  background-color: rgba(217, 83, 79, 0.1);
+}
 
 .danger strong {
-  color:#d9534f;
+  color: #d9534f;
 }
+
 .success {
   border-left-color: #2b542c;
   background-color: rgba(43, 84, 44, 0.1);
@@ -202,102 +251,6 @@ a:hover {
 
 .success strong {
   color: #2b542c;
-}
-
-/*Edit profile*/
-
-.edit-profile-container {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
-
-.edit-profile-container h1 {
-  color: #ff6525;
-  font-weight: 600;
-}
-
-/*Edit travel*/
-
-/*Travel details*/
-
-/*toDoList*/
-.toDoList-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-  padding: 20px;
-}
-
-.toDoList-container h2 {
-  color: #ff6525;
-}
-
-.todolist {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.add {
-  color: #ff6525;
-  background-color: white;
-  border: none;
-  font-size: 1.2rem;
-}
-
-.add:focus {
-  color: #ff6525;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  list-style: none;
-  margin: 15px;
-  padding-left: 30px;
-  font-size: 1.3rem;
-}
-
-.eachTask {
-  display: flex;
-  width: 100%;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #d3d3d3;
-}
-
-.addTask {
-  width: 250px;
-  height: 50px;
-}
-
-.addTask:focus {
-  color: #ff6525;
-}
-
-.eachTask p {
-  width: 180px;
-  margin: 0;
-}
-
-.deletetask {
-  color: #ff6525;
-  background-color: white;
-  border: none;
-  font-size: 1.1rem;
-}
-
-.btn-join {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  font-size: 1.5rem;
 }
 
 @media (min-width: 858px) {
@@ -359,6 +312,14 @@ a:hover {
     justify-content: center;
   }
 
+
+
+}
+
+@media (min-width: 992px) {
+  .container-form-signup {
+    width: 30%;
+  }
 
 
 }

@@ -45,7 +45,7 @@ class Dashboard extends Component {
 
         <h2>Trips organized by you </h2>
         <div className="ownTravels-container">
-          {this.state.travelsOwned &&
+          {this.state.travelsOwned.length > 0 ? (
             this.state.travelsOwned.map((eachTravel) => {
               return (
                 <Link to={`/travel/${eachTravel._id}`} key={eachTravel._id}>
@@ -73,12 +73,15 @@ class Dashboard extends Component {
                   </div>
                 </Link>
               );
-            })}
+            })
+          ) : (
+            <p className="no-notifications">You don't organized any trip yet</p>
+          )}
         </div>
 
         <h2>Trips that you are member</h2>
         <div className="joinedTravels-container">
-          {this.state.travelsJoined &&
+          {this.state.travelsJoined.length > 0 ? (
             this.state.travelsJoined.map((eachTravel) => {
               return (
                 <Link to={`/travel/${eachTravel._id}`} key={eachTravel._id}>
@@ -106,7 +109,10 @@ class Dashboard extends Component {
                   </div>
                 </Link>
               );
-            })}
+            })
+          ) : (
+            <p className="no-notifications">You haven't joined any trip yet</p>
+          )}
         </div>
       </div>
     );

@@ -162,27 +162,104 @@
     color: #ff6525;
 }
 
+.btn-join {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background-color: black;
+    transition: all .3s ease;
+    border: 1px solid black;
+    color: white;
+}
+
+.btn-join:hover {
+    color: black;
+    background-color: white;
+}
 
 @media only screen and (min-width: 600px) {
     .card-details-travel {
-        width: 80%;
+        width: 90%;
     }
 
     .card-img-top {
         height: 13rem
     }
+
     .details-travel-icons {
         display: flex;
         flex-direction: row;
     }
+
     .tasks-btn {
         width: 10rem;
         margin: 20px 20px
     }
+
     .edit-travel-btn {
         width: 10rem;
         margin: 20px 20px;
- 
-    
+
     }
+
+
+}
+
+@media only screen and (min-width: 600px) {
+    .card-details-travel {
+        width: 60%;
+    }
+
+    .details-travel-icons {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: row;
+        margin: 20px 40px
+    }
+
+    .tasks-btn {
+        width: 10rem;
+        margin: 20px 20px
+    }
+
+    .edit-travel-btn {
+        width: 10rem;
+        margin: 20px 20px;
+
+
+    }
+
+    .card-travel-body-details {
+        padding: 0 40px
+    }
+
+    .btn-members {
+        padding: 0 40px;
+        align-self: flex-end;
+
+    }
+
+    .profiles-info {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+    }
+
+    .invite-input {
+        padding: 0 40px;
+
+    }
+
+    .input-email {
+        width: 50%;
+    }
+    .join-travel {
+        padding: 0px 40px;
+    }
+
+
+
 }

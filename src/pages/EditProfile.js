@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
 import { Link } from "react-router-dom";
-// import { withServices } from "../lib/Services/ServicesProvider";
-
+import "../styles/EditTravel.css";
 class EditProfile extends Component {
   constructor(props) {
     super(props);
@@ -43,15 +42,14 @@ class EditProfile extends Component {
       userBirthdate,
     } = this.state;
 
-    this.props
-      .editProfile({
-        username,
-        userFrom,
-        about,
-        profilePic,
-        _id,
-        userBirthdate,
-      })
+    this.props.editProfile({
+      username,
+      userFrom,
+      about,
+      profilePic,
+      _id,
+      userBirthdate,
+    });
 
     this.getProfile();
     this.props.history.push(`/profile/${this.state.userId}`);
@@ -77,17 +75,24 @@ class EditProfile extends Component {
         console.log("Error while uploading the file: ", err);
       });
   };
-
+  handlePictureClick = () => {
+    document.querySelector("#fileSelectorEditProfile").click();
+  };
   render() {
     return (
-      <div className="edit-profile-container">
+      <div className="edit-travel-container">
+        <div className="header-edit-travel">
+          <div className="header-edit-travel-titles">
+            <h1>Edit your profile</h1>
+          </div>
+        </div>
         <div className="arrow-back">
-          <Link to={`/profile/${this.state.userId}`}>
-            <i className="fas fa-arrow-left"></i>
+          <Link to={`/travel/${this.state.travelId}`}>
+            <i className="fas fa-chevron-left"></i>
+            <span>go back</span>
           </Link>
         </div>
-        <div className="container-form">
-          <h1>Edit Profile</h1>
+        <div className="edit-profile-form-container">
           <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
             <div className="form-group">
               <label>
@@ -122,6 +127,7 @@ class EditProfile extends Component {
                 <b>About:</b>
               </label>
               <textarea
+                rows="5"
                 className="form-control"
                 name="about"
                 type="text"
@@ -136,18 +142,21 @@ class EditProfile extends Component {
                 <b>Profile picture:</b>
               </label>
               <input
+                style={{ display: "none" }}
+                id="fileSelectorEditProfile"
                 className="form-control"
                 type="file"
                 name="profilePic"
                 onChange={this.handleFileUpload}
               />
+              <input
+                className="form-control image-input"
+                onClick={this.handlePictureClick}
+                placeholder="Upload file"
+              />
             </div>
 
-            <input
-              type="submit"
-              value="Edit Profile"
-              className="btn btn-secondary"
-            />
+            <input type="submit" value="Edit Profile" className="button" />
           </form>
         </div>
       </div>

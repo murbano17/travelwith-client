@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
+import { isEmail } from "validator";
 
 class InviteInput extends Component {
   constructor(props) {
@@ -7,34 +8,10 @@ class InviteInput extends Component {
     this.state = {
       emailInvite: "",
       isMessageShown: false,
+      messageError: "",
+      sucessMessage: "",
     };
   }
-
-  componentDidUpdate = (prevProps, prevState) => {
-    return this.state.isMessageShown
-      ? (this.hideMessage = setTimeout(() => {
-          this.setState(() => ({ isMessageShown: false }));
-        }, 3000))
-      : null;
-  };
-  componentWillUnmount = () => {
-    clearTimeout(this.hideMessage);
-  };
-
-  showMessage = () => {
-    let messageUpdated = !this.state.isMessageShown;
-    this.setState({ isMessageShown: messageUpdated });
-  };
-  /* 
-  showMessage = (e) => {
-    this.changeState();
-    setTimeout(() => this.setState(this.changeState), 5000);
-  };
-
-  changeState = () => {
-    let messageUpdated = !this.state.isMessageShown;
-    this.setState({ isMessageShown: messageUpdated });
-  }; */
 
   handleChange = (event) => {
     let { name, value } = event.target;
@@ -45,38 +22,54 @@ class InviteInput extends Component {
     event.preventDefault();
     const { emailInvite } = this.state;
     const travel = this.props.travel;
+    const validationForm = this.isFormValid();
+    if (validationForm) {
+      setTimeout(() => {
+        this.props.createInvitation(travel, emailInvite);
+        this.setState({ emailInvite: "" });
+      }, 2500);
+    }
+  };
 
-    this.props.createInvitation(travel, emailInvite);
-    this.setState({ emailInvite: "" });
+  isFormValid = () => {
+    if (!isEmail(this.state.emailInvite)) {
+      this.setState({ messageError: "Email is not valid" });
+      return false;
+    }
+    this.setState({ messageError: "" });
+    this.setState({ sucessMessage: "Invitation sent successfully" });
+    return true;
   };
 
   render() {
     return (
       <div>
-      <div className="invite-input">
-        <h2>Invite a friend</h2>
-        <form onSubmit={this.handleFormSubmit}>
-          <input
-            type="text"
-            className="input-email form-control"
-            name="emailInvite"
-            value={this.state.emailInvite}
-            onChange={this.handleChange}
-            placeholder="email@email.com"
-          />
-          <input
-            className="button"
-            type="submit"
-            value="Send Invites"
-            onClick={(e) => this.showMessage(e)}
-          />
-        </form>
-        <div className="invitation-message">
-          {this.state.isMessageShown ? (
-            <p>Invitation sent successfully</p>
-          ) : null}
+        <div className="invite-input">
+          <h2>Invite a friend</h2>
+
+          <form onSubmit={this.handleFormSubmit}>
+            {this.state.messageError.length > 0 ? (
+              <div className="oaerror danger">
+                <strong>Error</strong> - {this.state.messageError}.
+              </div>
+            ) : null}
+            {this.state.sucessMessage.length > 0 ? (
+              <div className="oaerror success">
+                <strong>Success</strong> - {this.state.sucessMessage}.
+              </div>
+            ) : null}
+            <input
+              type="text"
+              className="input-email form-control"
+              name="emailInvite"
+              value={this.state.emailInvite}
+              onChange={this.handleChange}
+              placeholder="email@email.com"
+            />
+            <input className="button" type="submit" value="Send Invites" />
+          </form>
+          <div className="invitation-message"></div>
         </div>
-      </div>
       </div>
     );
   }

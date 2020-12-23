@@ -57,15 +57,12 @@ class CreateTravel extends Component {
   };
 
   handleFileUpload = (event) => {
-    console.log("The file to be uploaded is:", event.target.files[0]);
-
     const uploadData = new FormData();
     uploadData.append("coverPic", event.target.files[0]);
 
     this.props
       .handleUploadCoverPic(uploadData)
       .then((response) => {
-        console.log("response is:", response);
         this.setState({ coverPic: response.secure_url });
       })
       .catch((err) => {
@@ -91,6 +88,10 @@ class CreateTravel extends Component {
     this.setState({ messageError: "" });
     this.setState({ successMessage: "Your new travel is created!" });
     return true;
+  };
+
+  handlePictureClick = () => {
+    document.querySelector("#fileSelectorNewTravel").click();
   };
 
   render() {
@@ -164,10 +165,17 @@ class CreateTravel extends Component {
                   <b>Cover Picture</b>
                 </label>
                 <input
+                  style={{ display: "none" }}
+                  id="fileSelectorNewTravel"
                   className="form-control"
                   type="file"
                   name="coverPic"
                   onChange={this.handleFileUpload}
+                />
+                <input
+                  className="form-control image-input"
+                  onClick={this.handlePictureClick}
+                  placeholder="Upload file"
                 />
               </div>
               <div className="form-group">

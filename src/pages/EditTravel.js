@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Services/AuthProvider";
 import { Link } from "react-router-dom";
-// import { withServices } from "../lib/Services/ServicesProvider";
+import "../styles/EditTravel.css";
 
 class EditTravel extends Component {
   constructor(props) {
@@ -94,17 +94,28 @@ class EditTravel extends Component {
       });
   };
 
+  handlePictureClick = () => {
+    document.querySelector("#fileSelector").click();
+  };
+
   render() {
     return (
       <div className="edit-travel-container">
+        <div className="header-edit-travel">
+            <h1>Edit your travel</h1>
+        </div>
         <div className="arrow-back">
           <Link to={`/travel/${this.state.travelId}`}>
-            <i className="fas fa-arrow-left"></i>
+            <i className="fas fa-chevron-left"></i>
+            <span>go back</span>
           </Link>
         </div>
-        <div className="container-form">
-          <h1>Edit your Travel</h1>
-          <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+        <div className="edit-travel-form-container">
+          <form
+            onSubmit={this.handleFormSubmit}
+            encType="multipart/form-data"
+            className="edit-travel-form"
+          >
             <div className="form-group">
               <label>
                 <b>Travel Name:</b>
@@ -150,9 +161,16 @@ class EditTravel extends Component {
               </label>
               <input
                 className="form-control"
+                style={{ display: "none" }}
+                id="fileSelector"
                 type="file"
                 name="coverPic"
                 onChange={this.handleFileUpload}
+              />
+              <input
+                className="form-control image-input"
+                onClick={this.handlePictureClick}
+                placeholder="Upload file"
               />
             </div>
             <div className="form-group">
@@ -193,11 +211,7 @@ class EditTravel extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <input
-              className="btn btn-secondary"
-              type="submit"
-              value="Edit travel"
-            />
+            <input className="button" type="submit" value="Edit travel" />
           </form>
         </div>
       </div>

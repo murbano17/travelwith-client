@@ -1,7 +1,7 @@
 /*Dashboard*/
 
 .dashboard-header {
-    height: 20vh;
+    height: 15vh;
     padding: 30px 30px 0px 30px;
     display: flex;
     align-items: flex-end;
@@ -79,8 +79,8 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row;
 
 }
 
@@ -90,6 +90,22 @@
     font-size: 1.1rem;
 
 }
+
+.joinedTravels-container .no-notifications {
+    align-self: flex-start;
+    margin: 10px 10px 0px 30px;
+    font-size: 1.1rem;
+
+}
+
+.ownTravels-container .no-notifications {
+    align-self: flex-start;
+    margin: 10px 10px 0px 30px;
+    font-size: 1.1rem;
+
+}
+
+
 
 @media only screen and (min-width: 600px) {
     .dashboard-header {
@@ -108,6 +124,10 @@
     .notifications-panel .no-notifications {
         margin: 30px 0px 0px 50px;
 
+    }
+
+    .dashboard-container {
+        margin: 50px;
     }
 
 

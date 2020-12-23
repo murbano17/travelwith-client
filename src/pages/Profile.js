@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/Services/AuthProvider";
 import "../styles/Profile.css";
+import isEqual from "lodash/isEqual";
 
 class Profile extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Profile extends Component {
       currentUser: "",
     };
   }
+  mounted = false;
 
   getProfile = () => {
     return this.props
@@ -22,8 +24,19 @@ class Profile extends Component {
   };
 
   componentDidMount = () => {
+    this.mounted = true;
     this.getProfile();
   };
+
+  componentDidUpdate = async () => {
+    const userProfile = await this.props.getProfile(this.state.userId);
+    if (this.mounted && !isEqual(this.state.userToShow, userProfile)) {
+      this.setState({ userToShow: userProfile });
+    }
+  };
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   render() {
     return (

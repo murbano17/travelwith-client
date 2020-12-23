@@ -43,58 +43,58 @@ class NotificationPanel extends Component {
 
   render() {
     return (
-      <div className='notifications-panel'>
-          {this.state.invitationToShow.length >= 1 ? (
-            this.state.invitationToShow.map((eachInvitation) => {
-              return (
-                <div className="travel-card">
-                  <div className="img-card">
-                    <img
-                      src={eachInvitation.inviteTo.coverPic}
-                      className="card-img-top"
-                      alt="travelpic"
-                    />
-                  </div>
-                  <div className="card-travel-body">
-                    <h5 className="card-travel-title">
-                      {eachInvitation.inviteTo.travelName}
-                    </h5>
-                    <hr />
-                    <p className="card-travel-destination">
-                      {eachInvitation.inviteTo.origin} -{" "}
-                      {eachInvitation.inviteTo.destination}
-                    </p>
-                    <p className="card-travel-date">
-                      <i className="far fa-calendar-plus"></i>{" "}
-                      {eachInvitation.inviteTo.startDate} -{" "}
-                      {eachInvitation.inviteTo.endDate}
-                    </p>
-                  </div>
-
-                  <button
-                    className="accept-invitation"
-                    onClick={(e) =>
-                      this.handleAccept(
-                        e,
-                        eachInvitation.inviteTo,
-                        eachInvitation
-                      )
-                    }
-                  >
-                    Accept
-                  </button>
-                  <button
-                    className="delete-invitation"
-                    onClick={(e) => this.handleDecline(e, eachInvitation)}
-                  >
-                    Decline
-                  </button>
+      <div className="notifications-panel">
+        {this.state.invitationToShow.length >= 1 ? (
+          this.state.invitationToShow.map((eachInvitation) => {
+            return (
+              <div className="travel-card">
+                <div className="img-card">
+                  <img
+                    src={eachInvitation.inviteTo.coverPic}
+                    className="card-img-top"
+                    alt="travelpic"
+                  />
                 </div>
-              );
-            })
-          ) : (
-            <p className='no-notifications'>You don't have invitations</p>
-          )}
+                <div className="card-travel-body">
+                  <h5 className="card-travel-title">
+                    {eachInvitation.inviteTo.travelName}
+                  </h5>
+                  <hr />
+                  <p className="card-travel-destination">
+                    {eachInvitation.inviteTo.origin} -{" "}
+                    {eachInvitation.inviteTo.destination}
+                  </p>
+                  <p className="card-travel-date">
+                    <i className="far fa-calendar-plus"></i>{" "}
+                    {eachInvitation.inviteTo.startDate} -{" "}
+                    {eachInvitation.inviteTo.endDate}
+                  </p>
+                </div>
+
+                <button
+                  className="accept-invitation"
+                  onClick={(e) =>
+                    this.handleAccept(
+                      e,
+                      eachInvitation.inviteTo,
+                      eachInvitation
+                    )
+                  }
+                >
+                  Accept
+                </button>
+                <button
+                  className="delete-invitation"
+                  onClick={(e) => this.handleDecline(e, eachInvitation)}
+                >
+                  Decline
+                </button>
+              </div>
+            );
+          })
+        ) : (
+          <p className="no-notifications">You don't have invitations</p>
+        )}
       </div>
     );
   }

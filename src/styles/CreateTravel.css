@@ -85,9 +85,9 @@ input[type="checkbox"]:checked:before {
         align-items: center;
         justify-content: center;
     }
-
-
-
+    .form-create-travel {
+        width: 90%;
+    }
 }
 
 @media only screen and (min-width: 992px) {

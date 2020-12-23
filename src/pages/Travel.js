@@ -4,6 +4,7 @@ import TravelCard from "../components/TravelCard";
 import { withAuth } from "../lib/Services/AuthProvider";
 import SearchBar from "../components/SearchBar";
 import "../styles/Travel.css";
+import isEqual from "lodash/isEqual";
 
 class Travel extends Component {
   constructor(props) {
@@ -14,7 +15,9 @@ class Travel extends Component {
     };
   }
 
-  componentDidMount = async () => {
+  mounted = false;
+
+  getAllTravels = async () => {
     const allTravels = await this.props.getTravelsList();
     const filteredTravels = allTravels.filter((travel) => travel.isPublic);
     this.setState({
@@ -22,6 +25,19 @@ class Travel extends Component {
       travelToShow: filteredTravels,
     });
   };
+  componentDidMount = () => {
+    this.mounted = true;
+    this.getAllTravels();
+  };
+  componentDidUpdate = async () => {
+    const allTravels = await this.props.getTravelsList();
+    if (this.mounted && !isEqual(this.state.travelToShow, allTravels)) {
+      this.setState({ travelToShow: allTravels, travelList: allTravels });
+    }
+  };
+  componentWillUnmount() {
+    this.mounted = false;
+  }
 
   filterTravels = (searchString) => {
     const lowerSearchString = searchString.toLowerCase();

@@ -69,7 +69,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item image-navbar">
                 <p onClick={logout}>
-                  <i className="fas fa-sign-out-alt icon" />
+                  <i className="fas fa-sign-out-alt icon logout" />
                 </p>
               </li>
             </ul>

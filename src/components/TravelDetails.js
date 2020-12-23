@@ -5,6 +5,7 @@ import { withAuth } from "../lib/Services/AuthProvider";
 import InviteInput from "./InviteInput";
 import "../styles/TravelDetails.css";
 import "../styles/Card.css";
+import isEqual from "lodash/isEqual";
 
 export class TravelDetails extends Component {
   constructor(props) {
@@ -15,9 +16,22 @@ export class TravelDetails extends Component {
       userToShow: "",
     };
   }
+  mounted = false;
+
   componentDidMount() {
+    this.mounted = true;
     this.getTravel();
     this.getUser(this.props.user._id);
+  }
+
+  componentDidUpdate = async () => {
+    const travel = await this.props.getTravel(this.state.travelId);
+    if (this.mounted && !isEqual(this.state.travelToShow, travel)) {
+      this.setState({ travelToShow: travel });
+    }
+  };
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   getTravel = () => {
@@ -50,18 +64,19 @@ export class TravelDetails extends Component {
           <div className="travel-details-container">
             <div className="arrow-back">
               <Link to={`/travel`}>
-                <i className="fas fa-arrow-left"></i> Go back
+                <i className="fas fa-chevron-left"></i>
+                <span>go back</span>
               </Link>
             </div>
             <div className="card-details-travel">
               <div className="img-container">
                 <img
                   src={travel.coverPic}
-                  className="card-img-top"
+                  className="card-img-top desktop"
                   alt="cover travel pic"
                 />
               </div>
-              <div className="card-travel-body">
+              <div className="card-travel-body card-travel-body-details">
                 <h5 className="card-travel-title">{travel.travelName}</h5>
                 <hr />
                 <p className="card-travel-destination">
@@ -117,10 +132,10 @@ export class TravelDetails extends Component {
                     ) ? null : (
                       <div className="join-travel">
                         <button
-                          className="btn btn-secondary btn-join"
+                          className="btn-join"
                           onClick={(e) => this.handleAccept(e, travel)}
                         >
-                          <i className="fas fa-plus"></i>{" "}
+                          <i className=" add-icon fas fa-plus"></i>{" "}
                         </button>
                       </div>
                     )}

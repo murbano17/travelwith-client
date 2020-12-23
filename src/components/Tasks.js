@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-// import { withServices } from "../lib/Services/ServicesProvider";
 import { withAuth } from "../lib/Services/AuthProvider";
 import { Link } from "react-router-dom";
+import "../styles/Tasks.css";
 
 class Tasks extends Component {
   constructor(props) {
@@ -83,16 +83,20 @@ class Tasks extends Component {
     let classDone;
     return (
       <div className="toDoList-container">
+        <div className="profile-header">
+          <h1>Tasks</h1>
+        </div>
         <div className="arrow-back">
           <Link to={`/travel/${this.state.travelId}`}>
-            <i className="fas fa-arrow-left"></i>
+            <i className="fas fa-chevron-left"></i>
+            <span>go back</span>
           </Link>
         </div>
+
         <div className="todolist">
-          <h2>What to do?</h2>
-          <form onSubmit={this.handleFormSubmit}>
+          <h4>What to do?</h4>
+          <form onSubmit={this.handleFormSubmit} className="form-tasks">
             <input
-              className="addTask"
               type="text"
               name="taskName"
               value={this.state.taskName}
@@ -100,7 +104,6 @@ class Tasks extends Component {
               placeholder="Add a task"
             />
             <button type="submit" className="add">
-              {" "}
               <i className="fas fa-plus"></i>
             </button>
           </form>
